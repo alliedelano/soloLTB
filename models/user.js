@@ -4,13 +4,19 @@ const bcrypt = require('bcrypt');
 const SALT_ROUNDS = 6;
 
 const userSchema = new mongoose.Schema({
-  username: {type: String, required: true, lowercase: true, unique: true},
+  firstName: String,
+  lastName: String,
   email: {type: String, required: true, lowercase: true, unique: true},
+  bio: String,
   password: String,
-  photoUrl: String  // string from aws!
+  photoUrl: String,
+  homeDz: { type: mongoose.Schema.Types.ObjectId, ref: 'Dropzone'},
+  disciplines: [String],
+  experience: String
 }, {
   timestamps: true
 });
+
 
 userSchema.set('toJSON', {
   transform: function(doc, ret) {

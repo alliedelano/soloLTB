@@ -19,7 +19,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^2.0.1",
+    "semantic-ui-react": "^2.0.3",
     "serve-favicon": "^2.5.0",
     "uuid": "^8.3.2",
     "web-vitals": "^1.1.1"
