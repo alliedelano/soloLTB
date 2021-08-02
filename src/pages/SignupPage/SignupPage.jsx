@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import { Button, Dropdown, Form, Grid, Header, Image, Segment } from 'semantic-ui-react';
 import DisciplineSelector from '../../components/DisciplineSelector/DisciplineSelector';
 import DropzoneSelector from '../../components/DropzoneSelector/DropzoneSelector';
+import dropzoneApi from '../../utils/dropzoneApi';
+import ExperienceSelector from '../../components/ExperienceSelector/ExperienceSelector'
 
 import userService from '../../utils/userService';
 import { useHistory } from 'react-router-dom';
@@ -10,7 +12,7 @@ import { useHistory } from 'react-router-dom';
 
 export default function SignUpPage(props){
     const [dropzones, setDropzones] = useState([]);
-    const [ error, setError ] = useState('')
+    const [error, setError ] = useState('')
     const [selectedFile, setSelectedFile] = useState('')
     const [state, setState] = useState({
         firstName: '',
@@ -24,6 +26,8 @@ export default function SignUpPage(props){
         disciplines: '',
         bio: ''
     })
+
+    const history = useHistory()
     
     async function getDropzones(){
         try {
@@ -34,33 +38,42 @@ export default function SignUpPage(props){
         }
     }
     
-    useEffect(() => {
-        getDropzones();
-    }, [])
+    // useEffect(() => {
+    //     getDropzones();
+    // }, [])
     
 
-    function handleChange(){
-
+    function handleChange(e){
+      setState({
+        ...state,
+        [e.target.name]: e.target.value
+      })
     }
 
-    function handleFileInput(){
-
+    function handleFileInput(e){
+      setSelectedFile(e.target.files[0])
     }
 
-    function handleSubmit(){
-
+    async function handleSubmit(e){
+      e.preventDefault();
+      const formData = new FormData();
+      formData.append('photo', selectedFile);
+      for (let key in state){
+        formData.append(key, state[key]);
+      }
+      try {
+        await userService.signup(formData);
+        props.handleSignUpOrLogin();
+        history.push('/')
+      } catch(err){
+        console.log(err.message)
+        setError(err.message)
+      }
     }
-
- 
     
+
     return (
         <>
-        
-          {dropzones.map((dropzone) =>{
-              return(
-                <h1>{dropzone.name}</h1>
-              )
-          })}
              
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
@@ -107,12 +120,15 @@ export default function SignUpPage(props){
                       onChange={handleChange}
                       required
                     />
-                    <Form.Field>
-                        <DropzoneSelector />
+                    {/* <Form.Field value={state.homeDz}>
+                        <DropzoneSelector dropzones={dropzones}/>
                     </Form.Field>
                     <Form.Field>
+                       <ExperienceSelector />
+                    </Form.Field>
+                    <Form.Field value={state.disciplines}>
                         <DisciplineSelector />
-                    </Form.Field> 
+                    </Form.Field>  */}
                     <Form.TextArea label='bio' placeholder='Tell everyone a bit about yourself' name="bio" onChange={handleChange}/>
                     <Form.Field> 
                         <Form.Input

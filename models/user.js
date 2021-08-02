@@ -10,9 +10,9 @@ const userSchema = new mongoose.Schema({
   bio: String,
   password: String,
   photoUrl: String,
-  homeDz: { type: mongoose.Schema.Types.ObjectId, ref: 'Dropzone'},
-  disciplines: [String],
-  experience: String
+  // homeDz: { type: mongoose.Schema.Types.ObjectId, ref: 'Dropzone'},
+  // disciplines: [String],
+  // experience: String
 }, {
   timestamps: true
 });

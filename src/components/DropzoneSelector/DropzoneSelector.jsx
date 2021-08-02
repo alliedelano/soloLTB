@@ -1,11 +1,19 @@
 import React from 'react';
-import { Dropdown } from 'semantic-ui-react'
-
-import dropzonesArr from '../../dropzoneData'
-
-const DropzoneSelector = () => (
-    <Dropdown placeholder='select home dropzone' options={dropzonesArr} />
-)
+import { Dropdown, Item } from 'semantic-ui-react';
 
 
-export default DropzoneSelector
+
+export default function DropzoneSelector({ dropzones }){
+    return(
+        <select placeholder='select home dropzone'>
+            {dropzones.map(dropzone => (
+                <option
+                    key={dropzone._id}
+                    value={dropzone._id}
+                >
+                    {dropzone.name}
+                </option>
+            ))}
+        </select>
+    )
+}

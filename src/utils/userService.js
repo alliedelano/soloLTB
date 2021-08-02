@@ -8,12 +8,12 @@ const BASE_URL = '/api/users/';
 function signup(user) {
   return fetch(BASE_URL + 'signup', {
     method: 'POST',
-    body: user
+    body: user,
   })
   .then(res => {
     if (res.ok) return res.json();
     // Probably a duplicate email
-    throw new Error('Email already taken!');
+    throw new Error('Issue with signup!');
   })
   // Parameter destructuring!
   .then(({token}) => tokenService.setToken(token));

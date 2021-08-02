@@ -10,4 +10,4 @@ const dropzoneSchema = new mongoose.Schema({
 })
   
   
-  module.exports = mongoose.model('Dropzone', dropzoneSchema)
+module.exports = mongoose.model('Dropzone', dropzoneSchema)
