@@ -6,6 +6,10 @@ import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService';
 import Feed from '../Feed/Feed';
 import AdminPage from '../AdminPage/AdminPage'
+import ProfilePage from '../ProfilePage/ProfilePage'
+import MenuPage from '../MenuPage/MenuPage'
+import AddJumpPage from '../AddJumpPage/AddJumpPage'
+import WeatherPage from '../WeatherPage/WeatherPage'
 
 
 function App() {
@@ -39,7 +43,19 @@ function App() {
             <> 
              <Switch>
                 <Route exact path="/">
-                    <Feed />
+                  <MenuPage user={user} handleLogout={handleLogout} />
+                </Route>
+                <Route exact path="/DZfeed">
+                  <Feed user={user} handleLogout={handleLogout}/>
+                </Route>
+                <Route exact path="/newjump">
+                  <AddJumpPage user={user}/>
+                </Route>
+                <Route exact path="/weather">
+                  <WeatherPage user={user} handleLogout={handleLogout}/>
+                </Route>
+                <Route exact path="/:username">
+                  <ProfilePage user={user} handleLogout={handleLogout} />
                 </Route>
             </Switch>
             </>

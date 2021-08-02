@@ -1,18 +1,15 @@
 import React from 'react';
-import JumpFeed from '../../components/JumpFeed/JumpFeed'
 import MenuBar from '../../components/MenuBar/MenuBar'
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 
-export default function Feed({handleLogout}){
+export default function WeatherPage({handleLogout}){
     return(
         <>
             <MenuBar />
             <Header />
-            <h1>This is the page that displays all upcoming jumps at a DZ.</h1>
-            <JumpFeed />
+            <h1>This is the weather page for "your DZ"</h1>
             <Footer handleLogout={handleLogout}/>
         </>
-
     )
 }

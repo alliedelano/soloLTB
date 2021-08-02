@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
-import { Button, Dropdown, Form, Grid, Header, Image, Segment } from 'semantic-ui-react';
+import { Button, Dropdown, Form, Grid, Header, Image, Segment, Icon } from 'semantic-ui-react';
 import DisciplineSelector from '../../components/DisciplineSelector/DisciplineSelector';
 import DropzoneSelector from '../../components/DropzoneSelector/DropzoneSelector';
 import dropzoneApi from '../../utils/dropzoneApi';
@@ -78,7 +78,7 @@ export default function SignUpPage(props){
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
               <Header as='h2' color='teal' textAlign='center'>
-                <Image src='https://i.imgur.com/s4LrnlU.png' /> Sign Up    
+                <Icon name="plane" /> Sign Up    
               </Header>            
                 <Form autoComplete="off"  onSubmit={handleSubmit}>
                 <Segment stacked>               

@@ -1,18 +1,17 @@
 import React from 'react';
-import JumpFeed from '../../components/JumpFeed/JumpFeed'
 import MenuBar from '../../components/MenuBar/MenuBar'
-import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
+import ProfileBio from '../../components/ProfileBio/ProfileBio'
+import JumpFeed from '../../components/JumpFeed/JumpFeed'
 
-export default function Feed({handleLogout}){
+
+export default function ProfilePage({handleLogout}){
     return(
         <>
             <MenuBar />
-            <Header />
-            <h1>This is the page that displays all upcoming jumps at a DZ.</h1>
+            <ProfileBio />
             <JumpFeed />
             <Footer handleLogout={handleLogout}/>
         </>
-
     )
 }
