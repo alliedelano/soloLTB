@@ -16,7 +16,9 @@ const jumpSchema = new mongoose.Schema({
     description: String,
     organizer: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     jumpers: [jumpersSchema],
-    dropzone: {type: mongoose.Schema.Types.ObjectId, ref: 'Dropzone'}
+    dropzone: {type: mongoose.Schema.Types.ObjectId, ref: 'Dropzone'},
+    dzName: String,
+    username: String,
 }, {
     timestamps: true
 })

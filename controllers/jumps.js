@@ -2,10 +2,18 @@ const Jump = require('../models/jump');
 
 module.exports = {
     create,
+    index
 }
 
 
-
+async function index(req, res){
+    try {
+        const jumps = await Jump.find({}).populate("user").exec();
+        res.status(200).json({ jumps })
+    } catch (err) {
+        console.log("error getting index of posts")
+    }
+}
 
 async function create(req, res){
     console.log(req.body)

@@ -39,6 +39,8 @@ export default function AddJumpForm({user, dropzone}){
         formData.append('date', date)
         formData.append('dropzone', dropzone._id)
         formData.append('organizer', user._id)
+        formData.append('dzName', dropzone.name)
+        formData.append('username', user.username)
         for (let key in state){
             formData.append(key, state[key])
         }
@@ -47,6 +49,7 @@ export default function AddJumpForm({user, dropzone}){
         }
         try {
             await jumpApi.create(formData);
+            history.push('/')
             
         } catch(err){
             console.log(err.message)
