@@ -4,14 +4,14 @@ import MenuBar from '../../components/MenuBar/MenuBar'
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 
-export default function Feed({handleLogout}){
+export default function Feed({user, handleLogout}){
     return(
         <>
             <MenuBar />
-            <Header />
+            <Header user={user}/>
             <h1>This is the page that displays all upcoming jumps at a DZ.</h1>
             <JumpFeed />
-            <Footer handleLogout={handleLogout}/>
+            <Footer user={user} handleLogout={handleLogout}/>
         </>
 
     )

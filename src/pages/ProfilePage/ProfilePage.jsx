@@ -5,13 +5,13 @@ import ProfileBio from '../../components/ProfileBio/ProfileBio'
 import JumpFeed from '../../components/JumpFeed/JumpFeed'
 
 
-export default function ProfilePage({handleLogout}){
+export default function ProfilePage({user, handleLogout}){
     return(
         <>
             <MenuBar />
-            <ProfileBio />
-            <JumpFeed />
-            <Footer handleLogout={handleLogout}/>
+            <ProfileBio user={user}/>
+            <JumpFeed user={user}/>
+            <Footer user={user} handleLogout={handleLogout}/>
         </>
     )
 }
