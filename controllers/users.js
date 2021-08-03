@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Dropzone = require('../models/dropzone');
 const jwt = require('jsonwebtoken');
 const SECRET = process.env.SECRET;
 const { v4: uuidv4 } = require('uuid');
@@ -8,7 +9,8 @@ const s3 = new S3(); // initialize the construcotr
 
 module.exports = {
   signup,
-  login
+  login,
+  profile
 };
 
 function signup(req, res) {
@@ -62,6 +64,19 @@ async function login(req, res) {
   }
 }
 
+async function profile(req, res){
+  console.log(req.params, "<-- req.params")
+  try {
+    const user = await User.findOne({username: req.params.username})
+    console.log(user)
+    if(!user) res.status(404).json({message: 'no username match'})
+    const dropzone = await Dropzone.findOne({id: user.homeDz})
+    res.status(200).json({dropzone: dropzone, user: user})
+  } catch(err){
+    console.log(err, "this is an error")
+    res.json({err})
+  }
+}
 
 /*----- Helper Functions -----*/
 

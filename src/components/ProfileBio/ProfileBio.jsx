@@ -13,6 +13,7 @@ export default function ProfileBio({user}){
                         <Segment vertical>
                             <h3>{user.firstName} {user.lastName}</h3>
                             <h3>{user.homeDz}</h3>
+                            <h3>{user.username}</h3>
                             <h3>Experience Level: {user.experience}</h3>
                         </Segment>
                         <Segment>
