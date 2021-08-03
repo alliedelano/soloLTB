@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {Icon, Grid, Segment} from 'semantic-ui-react'
 
 export default function ProfileBio({user}){
+    
     return(
         <>
             <Grid textAlign='center' columns={2}>

@@ -31,6 +31,13 @@ export default function ProfilePage({user, handleLogout}){
         getProfile();
     }, [])
 
+    useEffect(() => {
+        getProfile();
+    }, [username])
+
+    
+
+
     if (error) {
         return(
             <>
