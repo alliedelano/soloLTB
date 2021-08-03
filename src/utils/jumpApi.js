@@ -6,7 +6,7 @@ export function create(jump){
         method: 'POST',
         body: jump,
         headers: {
-        'Authorization': 'Bearer ' + tokenService.getToken()
-        }
+            'Authorization': 'Bearer ' + tokenService.getToken()
+          }
     }).then(res => res.json());
 }

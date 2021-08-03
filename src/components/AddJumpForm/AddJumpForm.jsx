@@ -3,8 +3,9 @@ import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import { Button, Dropdown, Form, Grid, Header, Image, Segment } from 'semantic-ui-react';
 import { useHistory } from 'react-router-dom';
 import DisciplineSelector from '../../components/DisciplineSelector/DisciplineSelector'
+import * as jumpApi from '../../utils/jumpApi'
 
-export default function AddJumpForm({user, dropzone, handleAddJump}){
+export default function AddJumpForm({user, dropzone}){
     const [state, setState] = useState({
         name: '',
         slots: '',
@@ -41,13 +42,20 @@ export default function AddJumpForm({user, dropzone, handleAddJump}){
         for (let key in state){
             formData.append(key, state[key])
         }
-        handleAddJump(formData) 
+        for (var pair of formData.entries()) {
+            console.log(pair[0]+ ', ' + pair[1])
+        }
+        try {
+            await jumpApi.create(formData);
+            
+        } catch(err){
+            console.log(err.message)
+        }
     }
 
 
 
 
-    
     return(
         <>  
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
@@ -75,9 +83,7 @@ export default function AddJumpForm({user, dropzone, handleAddJump}){
                        onChange={e => handleDisciplineChange(e.target.option.name)}
                     /> */}
                     <Form.Input type="number" name="slots" value={state.slots} onChange={handleChange}/>
-
-                    
-                    <Form.TextArea placeholder='Describe the jump' name='description' onChange={handleChange}/>
+                    <Form.TextArea placeholder='Describe the jump' name='description' value={state.description} onChange={handleChange}/>
                     
                     <Button
                       type="submit"

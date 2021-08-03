@@ -5,7 +5,7 @@ import Footer from '../../components/Footer/Footer'
 import userEvent from '@testing-library/user-event';
 import dropzoneApi from '../../utils/dropzoneApi'
 import { Grid, Loader } from 'semantic-ui-react'
-import jumpApi from '../../utils/jumpApi'
+
 
 export default function AddJumpPage({user, handleLogout}){
     const [dropzone, setDropzone] = useState({})
@@ -23,10 +23,7 @@ export default function AddJumpPage({user, handleLogout}){
         }
     }
 
-    function handleAddJump(jump){
-        console.log(jump);
-        const data = await jumpApi.create(jump);
-    }
+
 
     useEffect(() => {
         getDropzone();
@@ -52,7 +49,7 @@ export default function AddJumpPage({user, handleLogout}){
     return(
         <>
             <MenuBar />
-            <AddJumpForm handleAddJump={handleAddJump} user={user} dropzone={dropzone} />
+            <AddJumpForm user={user} dropzone={dropzone} />
             <Footer user={user} handleLogout={handleLogout} />
         </>
     )

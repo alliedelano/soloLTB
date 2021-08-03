@@ -12,7 +12,7 @@ const jumpSchema = new mongoose.Schema({
     name: String,
     date: Date,
     // disciplines: [{}],
-    slots: Number,
+    slots: String,
     description: String,
     organizer: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     jumpers: [jumpersSchema],
