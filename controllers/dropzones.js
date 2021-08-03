@@ -2,7 +2,8 @@ const Dropzone = require('../models/dropzone');
 
 module.exports = {
     create,
-    index
+    index,
+    findOne
 }
 
 async function create(req, res){
@@ -23,4 +24,15 @@ async function index(req, res){
         const dropzones = await Dropzone.find({});
         res.status(200).json({ dropzones })
     } catch (err) {}
+}
+
+async function findOne(req, res){
+    try {
+        const dropzone = await Dropzone.findOne({_id: req.params.id})
+        console.log(dropzone)
+        res.status(200).json({dropzone: dropzone})
+    } catch (err){
+        console.log(err, "error finding dropzone")
+        res.json({err})
+    }
 }

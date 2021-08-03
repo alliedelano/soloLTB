@@ -11,6 +11,7 @@ import { Grid, Loader } from 'semantic-ui-react'
 export default function ProfilePage({user, handleLogout}){
     
     const [profileUser, setProfileUser] = useState({});
+    const [profileDz, setProfileDz] = useState({})
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('')
 
@@ -20,7 +21,8 @@ export default function ProfilePage({user, handleLogout}){
         try {
             const data = await userService.getProfile(username);
             setLoading(() => false);
-            setProfileUser(() => data.user)
+            setProfileUser(() => data.user);
+            setProfileDz(() => data.dropzone)
         } catch (err) {
             console.log(err)
             setError("Profile does not exist")
@@ -66,7 +68,7 @@ export default function ProfilePage({user, handleLogout}){
     return(
         <>
             <MenuBar user={user}/>
-            <ProfileBio user={profileUser}/>
+            <ProfileBio user={profileUser} dropzone={profileDz}/>
             <JumpFeed user={profileUser}/>
             <Footer user={user} handleLogout={handleLogout}/>
         </>

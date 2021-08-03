@@ -70,7 +70,8 @@ async function profile(req, res){
     const user = await User.findOne({username: req.params.username})
     console.log(user)
     if(!user) res.status(404).json({message: 'no username match'})
-    const dropzone = await Dropzone.findOne({id: user.homeDz})
+    const dropzone = await Dropzone.findOne({_id: user.homeDz})
+    console.log(dropzone)
     res.status(200).json({dropzone: dropzone, user: user})
   } catch(err){
     console.log(err, "this is an error")

@@ -1,4 +1,4 @@
-const BASE_URL = '/api/dropzones';
+const BASE_URL = '/api/dropzones/';
 
 export function create(dropzone){
     return fetch(BASE_URL, {
@@ -12,8 +12,13 @@ function getAll(){
     return fetch(BASE_URL).then(res => res.json());
 }
 
+function getDropzone(dropzoneId){
+    return fetch(BASE_URL + dropzoneId).then(res => res.json())
+}
+
 export default {
     create,
-    getAll
+    getAll,
+    getDropzone
 }
 
