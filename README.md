@@ -1,39 +1,24 @@
-## Setup 
+(Screenshot of homepage)
 
-1. Clone the repo
-2. Rename the folder to your Project, you can use the `mv` command like `mv mern-boilerplate yourprojectname`
-3. Delete the `.git` file, when you are in the root of the file, you can press `ls` and you should see a `.git` file, then go ahead and run `rm -rf .git`
+# Solo Looking to Build 
+This is a load organizing app built for skydivers. Once logged in, jumpers can organize new jumps, join jumps, and check the weather.
 
+## Screenshots
+(add screenshots)
 
-#### Setup your git repo
+## Technologies Used
+* React
+* Express.js
+* Node
+* HTML/CSS/Javascript
+* National Weather Service API
+* Mongoose
+* MongoDB Atlas
 
-1. go to github and create your github and create a repo (Without a readme or liscense you can add that later!)
-2.  Then follow the directions on github that says ```…or create a new repository on the command line```
+## Getting Started
+Check out the app here: (INSERT)
 
-it should look like this
+I used a Trello board to help organize the development of this app, from planning through deployment: (INSERT)
 
-```
-git init
-git add .
-git commit -m "first commit"
-git remote add origin git@git.generalassemb.ly:SEI-CC/test.git // this will be whatever your address will be
-git push -u origin master
-```
-
-#### Setup the App
-
-```npm install```
-
-*DOTENV*
-
-`touch .env`
-
-add your variables
-
-```
-DATABASE_URL=mongodb://localhost:27017/testagramV2
-BUCKET_NAME=catcollectorone
-SECRET=mysecretforjwt
-```
-
-The app is configured, to use those respective key names for the database, jwt secret and aws bucket, of course you'll have your own values
+## Next STeps
+(add)
