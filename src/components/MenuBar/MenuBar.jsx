@@ -19,7 +19,7 @@ export default function MenuBar(){
                     <Link to="/weather"><Icon name="sun" size="large"/></Link>
                 </Menu.Item>
                 <Menu.Item>
-                    <Icon name="calendar alternate" size="large"/>
+                    <Link to="/myjumps"><Icon name="calendar alternate" size="large"/></Link>
                 </Menu.Item>
                 <Menu.Item>
                     <Link to="/newjump"><Icon name="plane" size="large"/></Link>

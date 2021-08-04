@@ -15,7 +15,7 @@ export default function MenuPage({user, handleLogout}){
             <br />
             <Link to="/weather"><h4><Icon name="sun" size="huge"></Icon> <br />DZ Weather Forecast</h4></Link>
             <br />
-            <h4><Icon name="calendar alternate" size="huge" color="red"></Icon> <br />My Upcoming Jumps</h4>
+            <Link to="/myjumps"><h4><Icon name="calendar alternate" size="huge"></Icon> <br />My Upcoming Jumps</h4></Link>
             <br />
             <Link to="/newjump"><h4><Icon name="plane" size="huge"></Icon> <br />Organize a Jump</h4></Link>
             <br />

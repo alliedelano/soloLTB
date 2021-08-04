@@ -32,7 +32,7 @@ export default function MyJumpsPage({user, handleLogout}){
             <h1>This is the my jumps page</h1>
             <MenuBar />
             <Header user={user}/>
-            <JumpFeed user={user} jumps={jumps} loading={loading} onlyUserJumps={true}/>
+            <JumpFeed user={user} jumps={jumps} loading={loading}/>
             <Footer user={user} handleLogout={handleLogout}/>
         </>
     )
