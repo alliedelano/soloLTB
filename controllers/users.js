@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const Dropzone = require('../models/dropzone');
+const Jump = require('../models/jump')
 const jwt = require('jsonwebtoken');
 const SECRET = process.env.SECRET;
 const { v4: uuidv4 } = require('uuid');
@@ -68,11 +69,12 @@ async function profile(req, res){
   console.log(req.params, "<-- req.params")
   try {
     const user = await User.findOne({username: req.params.username})
-    console.log(user)
     if(!user) res.status(404).json({message: 'no username match'})
     const dropzone = await Dropzone.findOne({_id: user.homeDz})
+    const orgJumps = await Jump.find({organizer: user._id})
+    const joinedJumps = await Jump.find({'jumpers.userId': user._id})
     console.log(dropzone)
-    res.status(200).json({dropzone: dropzone, user: user})
+    res.status(200).json({dropzone: dropzone, user: user, orgJumps: orgJumps, joinedJumps: joinedJumps})
   } catch(err){
     console.log(err, "this is an error")
     res.json({err})

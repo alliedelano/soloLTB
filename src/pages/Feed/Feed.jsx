@@ -46,12 +46,16 @@ export default function Feed({user, handleLogout}){
         getJumps();
     }, [])
 
+    // useEffect(() => {
+    //     getJumps();
+    // }, [jumps])
+
 
     return(
         <>
             <MenuBar />
             <Header user={user}/>
-            <h3>Here's what's happening at your DZ!</h3>
+            <h3>Here's what's happening at your DZ! (RIGHT NOW ALL DZs)</h3>
             <br />
             <JumpFeed user={user} jumps={jumps} loading={loading} addJumper={addJumper} removeJumper={removeJumper}/>
             <Footer user={user} handleLogout={handleLogout}/>

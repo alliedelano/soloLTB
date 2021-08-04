@@ -18,3 +18,14 @@ export function getAll(){
         }
     }).then(res => res.json())
 }
+
+export function findJumpers(jumpId){
+    return fetch(`${BASE_URL}${jumpId}`, {
+        headers: {
+			'Authorization': 'Bearer ' + tokenService.getToken()
+		}
+	}).then(res => {
+		if(res.ok) return res.json()
+	  new Error('cannot find jump');
+    })
+}

@@ -3,7 +3,7 @@ import JumpCard from '../../components/JumpCard/JumpCard'
 import { Card, Loader, Dimmer, Segment, Image } from 'semantic-ui-react';
 
 
-export default function JumpFeed({user, jumps, loading, addJumper, removeJumper}){
+export default function JumpFeed({user, jumps, loading, addJumper, removeJumper, isProfile}){
     return(
         <>
     <Card.Group stackable>
@@ -21,7 +21,7 @@ export default function JumpFeed({user, jumps, loading, addJumper, removeJumper}
             jump={jump}
             key={jump._id}
             user={user}
-            isProfile={false}
+            isProfile={isProfile}
             addJumper={addJumper}
             removeJumper={removeJumper}
           />

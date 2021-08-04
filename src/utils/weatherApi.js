@@ -1,2 +1,11 @@
-const BASE_URL = '/api/users/';
+
+
+function getWeather(url){
+    return fetch(url).then(res => res.json())
+}
+
+
+export default {
+    getWeather
+}
 

@@ -15,20 +15,21 @@ export default function ProfilePage({user, handleLogout}){
     const [profileUser, setProfileUser] = useState({});
     const [profileDz, setProfileDz] = useState({})
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState('')
-    const [jumps, setJumps] = useState([])
-    
+    const [error, setError] = useState('');
+    const [allJumps, setAllJumps] = useState([])
+    const [orgJumps, setOrgJumps] = useState([]);
+    const [joinedJumps, setJoinedJumps] = useState([]);
 
+    
     async function getJumps(){
         try {
             const data = await jumpApi.getAll();
-            setJumps([...data.jumps])
+            setAllJumps([...data.jumps])
             setLoading(false)
         } catch (err){
             console.log(err, " this is the error")
         }
     }
-
     async function addJumper(jumpId){
         try {
             const data = await jumperApi.addJumper(jumpId);
@@ -56,6 +57,9 @@ export default function ProfilePage({user, handleLogout}){
             setLoading(() => false);
             setProfileUser(() => data.user);
             setProfileDz(() => data.dropzone)
+            setOrgJumps(() => data.orgJumps)
+            setJoinedJumps(() => data.joinedJumps)
+            setLoading(false)
         } catch (err) {
             console.log(err)
             setError("Profile does not exist")
@@ -64,7 +68,6 @@ export default function ProfilePage({user, handleLogout}){
     
     useEffect(() => {
         getProfile();
-        getJumps()
     }, [])
 
     useEffect(() => {
@@ -104,7 +107,7 @@ export default function ProfilePage({user, handleLogout}){
             <MenuBar user={user}/>
             <ProfileBio user={profileUser} dropzone={profileDz}/>
             <br />
-            <JumpFeed user={profileUser} jumps={jumps} loading={loading} addJumper={addJumper} removeJumper={removeJumper}/>
+            <JumpFeed user={profileUser} isProfile ={true} jumps={joinedJumps} loading={loading} addJumper={addJumper} removeJumper={removeJumper}/>
             <Footer user={user} handleLogout={handleLogout}/>
         </>
     )

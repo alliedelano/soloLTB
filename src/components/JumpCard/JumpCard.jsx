@@ -1,21 +1,43 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Icon, Image } from "semantic-ui-react";
+import { Card, Icon, Image, Segment, Dimmer, Loader } from "semantic-ui-react";
 import {Link} from 'react-router-dom'
+import * as jumpApi from '../../utils/jumpApi'
 
 export default function JumpCard({jump, addJumper, removeJumper, user}){
 
-    const [jumpers, setJumpers] = useState(jump.jumpers)
+    //const [jumpers, setJumpers] = useState(jump.jumpers)
+    const [loading, setLoading] = useState(false)
 
     const onJump = jump.jumpers.findIndex(jumper => jumper.username === user.username)
 
     const clickHandler = onJump > -1 ? () => removeJumper(jump.jumpers[onJump]._id): () => addJumper(jump._id)
     const icon = onJump > -1 ? 'minus' : 'plus'
 
-    
+    // async function getJumpers(){
+    //     try{
+    //         const data = await jumpApi.findJumpers(jump._id);
+    //         setJumpers([...data.jumpers])
+    //         //setLoading(false)
+    //     } catch (err) {
+    //         console.log(err)
+    //     }
+    // }
+
+    // useEffect(() => {
+    //     getJumpers()
+    // }, [])
 
     return(
         <>
             <Card key={jump._id}>
+            {/* {loading ? (
+                <Segment>
+                    <Dimmer active inverted>
+                        <Loader size="small">Loading</Loader>
+                    </Dimmer>
+                    <Image src="https://react.semantic-ui.com/images/wireframe/short-paragraph.png" />
+                </Segment>
+            ) : null} */}
                 <Card.Content>
                     <Card.Header>{jump.name}</Card.Header>
                     <Card.Description>{jump.date}</Card.Description>
@@ -25,7 +47,7 @@ export default function JumpCard({jump, addJumper, removeJumper, user}){
                     <Card.Description>{jump.dzName}</Card.Description>
                 </Card.Content>
                 <Card.Content>
-                    {jumpers.map((jumper) => {
+                    {jump.jumpers.map((jumper) => {
                         return(
                             <Link to={`/${jumper.username}`}><Image src={`${jumper.userAvatar}`} avatar size="small" /></Link>
                         )

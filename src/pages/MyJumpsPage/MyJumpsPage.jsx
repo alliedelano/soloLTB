@@ -6,11 +6,67 @@ import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import JumpFeed from '../../components/JumpFeed/JumpFeed'
 import * as jumpApi from '../../utils/jumpApi'
+import * as jumperApi from '../../utils/jumperApi'
 import { Grid, Loader } from 'semantic-ui-react'
 
 export default function MyJumpsPage({user, handleLogout}){
     const [jumps, setJumps] = useState([])
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
+    const [profileUser, setProfileUser] = useState({});
+    const [profileDz, setProfileDz] = useState({})
+    const [allJumps, setAllJumps] = useState([])
+    const [orgJumps, setOrgJumps] = useState([]);
+    const [joinedJumps, setJoinedJumps] = useState([]);
+
+    
+    async function getJumps(){
+        try {
+            const data = await jumpApi.getAll();
+            setAllJumps([...data.jumps])
+            setLoading(false)
+        } catch (err){
+            console.log(err, " this is the error")
+        }
+    }
+    async function addJumper(jumpId){
+        try {
+            const data = await jumperApi.addJumper(jumpId);
+            getJumps();
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    async function removeJumper(jumperId){
+        try {
+            const data = await jumperApi.removeJumper(jumperId);
+            getJumps()
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+
+    async function getProfile() {
+        try {
+            const data = await userService.getProfile(user.username);
+            setLoading(() => false);
+            setProfileUser(() => data.user);
+            setProfileDz(() => data.dropzone)
+            setOrgJumps(() => data.orgJumps)
+            setJoinedJumps(() => data.joinedJumps)
+            setLoading(false)
+        } catch (err) {
+            console.log(err)
+            setError("Profile does not exist")
+        }
+    }
+    
+    useEffect(() => {
+        getProfile();
+    }, [])
+    
 
     async function getJumps(){
         try {
@@ -23,16 +79,17 @@ export default function MyJumpsPage({user, handleLogout}){
     }
 
     useEffect(() => {
-        getJumps();
+        getProfile();
     }, [])
 
     
     return(
         <>
-            <h1>This is the my jumps page</h1>
             <MenuBar />
             <Header user={user}/>
-            <JumpFeed user={user} jumps={jumps} loading={loading}/>
+            <h5>Here are your jumps:</h5>
+            <br />
+            <JumpFeed user={profileUser} jumps={joinedJumps} loading={loading} addJumper={addJumper} removeJumper={removeJumper}/>
             <Footer user={user} handleLogout={handleLogout}/>
         </>
     )
