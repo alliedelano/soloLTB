@@ -10,7 +10,7 @@ import ProfilePage from '../ProfilePage/ProfilePage'
 import MenuPage from '../MenuPage/MenuPage'
 import AddJumpPage from '../AddJumpPage/AddJumpPage'
 import WeatherPage from '../WeatherPage/WeatherPage'
-
+import MyJumpsPage from '../MyJumpsPage/MyJumpsPage'
 
 function App() {
 
@@ -53,6 +53,9 @@ function App() {
                 </Route>
                 <Route exact path="/weather">
                   <WeatherPage user={user} handleLogout={handleLogout}/>
+                </Route>
+                <Route exact path="/myjumps">
+                  <MyJumpsPage user={user} handleLogout={handleLogout} />
                 </Route>
                 <Route exact path="/:username">
                   <ProfilePage user={user} handleLogout={handleLogout} />
