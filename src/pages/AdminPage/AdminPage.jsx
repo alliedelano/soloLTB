@@ -4,6 +4,8 @@ import dropzoneApi from '../../utils/dropzoneApi'
 import AddPermissionForm from '../../components/AddPermissionForm/AddPermissionForm'
 import * as permissionApi from '../../utils/permissionApi'
 import userService from '../../utils/userService'
+import MenuBar from '../../components/MenuBar/MenuBar'
+import {useHistory} from 'react-router-dom'
 
 
 
@@ -13,7 +15,24 @@ export default function AdminPage({user}){
     
     const [loading, setLoading] = useState(true)
 
-    
+    const [permissions, setPermissions] = useState([])
+
+    const history = useHistory()
+
+  async function getPermissions(){
+      try {
+        const data = await permissionApi.getPermissions(user._id)
+        if (data.permissions.length) {
+            setPermissions([...data.permissions])
+            setLoading(false)
+        } else {
+            history.push('/')
+        }
+        
+      } catch (err){
+        console.log("error getting permissions")
+      }
+    }
 
     function handleAddDropzone(dropzone){
         console.log(dropzone)
@@ -24,13 +43,20 @@ export default function AdminPage({user}){
         console.log(permission)
         const data = permissionApi.create(permission)
     }
+
+    useEffect(() => {
+        getPermissions()
+
+    }, [])
      
     return(
         <>
+        {loading ? <h1>Loading</h1> :
+        <>
+            <MenuBar user={user}/>
             <h1>Admin Page</h1>
             <AddDropzoneForm handleAddDropzone={handleAddDropzone} />
-            <AddPermissionForm user={user} handleAddPermission={handleAddPermission}/>
-            
+            <AddPermissionForm user={user} handleAddPermission={handleAddPermission}/> </> }
         </>
         
     )

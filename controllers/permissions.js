@@ -17,7 +17,8 @@ async function create(req, res){
 }
 
 async function userPermissions(req, res){
-    const permissions = await Permission.find({'userId': userId})
+    console.log('hit permissions function')
+    const permissions = await Permission.find({userId: req.params.userId})
     console.log(permissions)
-    res.status(200).json({ permissions: permissions})
+    res.status(200).json({ permissions: permissions })
 }

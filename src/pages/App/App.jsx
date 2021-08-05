@@ -13,6 +13,7 @@ import WeatherPage from '../WeatherPage/WeatherPage'
 import MyJumpsPage from '../MyJumpsPage/MyJumpsPage'
 
 
+
 function App() {
 
   const [user, setUser] = useState(userService.getUser()) // getUser decodes our JWT token, into a javascript object
@@ -21,8 +22,10 @@ function App() {
 
   function handleSignUpOrLogin(){
     setUser(userService.getUser()) // getting the user from localstorage decoding the jwt
-    
   }
+
+  
+
 
   function handleLogout(){
     userService.logout();
@@ -37,9 +40,6 @@ function App() {
           </Route>
           <Route exact path="/signup">
              <SignupPage handleSignUpOrLogin={handleSignUpOrLogin}/>
-          </Route>
-          <Route exact path="/admin">
-            <AdminPage user={user}/>
           </Route>
           {userService.getUser() ? 
             <> 
@@ -58,6 +58,9 @@ function App() {
                 </Route>
                 <Route exact path="/myjumps">
                   <MyJumpsPage user={user} handleLogout={handleLogout} />
+                </Route>
+                <Route exact path="/admin">
+                  <AdminPage user={user}/>
                 </Route>
                 <Route exact path="/:username">
                   <ProfilePage user={user} handleLogout={handleLogout} />

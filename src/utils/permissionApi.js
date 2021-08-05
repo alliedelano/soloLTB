@@ -12,7 +12,7 @@ export function create(permission){
 }
 
 export function getPermissions(userId){
-    return fetch(BASE_URL, {
+    return fetch(`${BASE_URL}${userId}`, {
         headers: {
             'Authorization': 'Bearer ' + tokenService.getToken()
         }

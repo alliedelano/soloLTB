@@ -5,6 +5,7 @@ import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import * as jumpApi from '../../utils/jumpApi';
 import * as jumperApi from '../../utils/jumperApi'
+import * as permissionApi from '../../utils/permissionApi'
 
 
 export default function Feed({user, handleLogout}){
@@ -48,15 +49,6 @@ export default function Feed({user, handleLogout}){
             console.log(err)
         }
     }
-
-
-
-    useEffect(() => {
-        getJumps();
-    }, [])
-
-    useEffect(() => {
-    }, [jumps])
 
 
     return(

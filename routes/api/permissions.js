@@ -5,6 +5,6 @@ const multer = require('multer');
 const upload = multer()
 
 router.post('/', upload.none(), permissionsCtrl.create);
-router.get('/', permissionsCtrl.userPermissions)
+router.get('/:userId', permissionsCtrl.userPermissions)
 
 module.exports = router;
