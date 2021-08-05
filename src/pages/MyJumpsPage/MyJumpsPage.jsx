@@ -92,7 +92,7 @@ export default function MyJumpsPage({user, handleLogout}){
     
     return(
         <>
-            <MenuBar />
+            <MenuBar user={user}/>
             <Header user={user}/>
             <h5>Here are your jumps:</h5>
             <br />

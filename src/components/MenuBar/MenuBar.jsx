@@ -1,9 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Menu, Icon} from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
+import * as permissionApi from '../../utils/permissionApi'
 
-export default function MenuBar(){
+export default function MenuBar({user}){
+
+    const [permissions, setPermissions] = useState([])
+    const [admin, setAdmin] = useState(false)
+
+    async function getPermissions(userId){
+        try {
+          const data = await permissionApi.getPermissions(userId)
+          setPermissions([...data.permissions])
+          console.log(permissions)
+        } catch (err){
+          console.log("error getting permissions")
+        }
+      }
+
     
+
     
     return(
         <>

@@ -25,7 +25,8 @@ app.use(require('./config/auth'));
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/dropzones', require('./routes/api/dropzones'));
 app.use('/api/jumps', require('./routes/api/jumps'));
-app.use('/api', require('./routes/api/jumpers'))
+app.use('/api/permissions', require('./routes/api/permissions'));
+app.use('/api', require('./routes/api/jumpers'));
 
 // "catch all" route
 app.get('/*', function(req, res) {

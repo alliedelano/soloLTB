@@ -12,6 +12,7 @@ import AddJumpPage from '../AddJumpPage/AddJumpPage'
 import WeatherPage from '../WeatherPage/WeatherPage'
 import MyJumpsPage from '../MyJumpsPage/MyJumpsPage'
 
+
 function App() {
 
   const [user, setUser] = useState(userService.getUser()) // getUser decodes our JWT token, into a javascript object
@@ -20,6 +21,7 @@ function App() {
 
   function handleSignUpOrLogin(){
     setUser(userService.getUser()) // getting the user from localstorage decoding the jwt
+    
   }
 
   function handleLogout(){
@@ -37,7 +39,7 @@ function App() {
              <SignupPage handleSignUpOrLogin={handleSignUpOrLogin}/>
           </Route>
           <Route exact path="/admin">
-            <AdminPage />
+            <AdminPage user={user}/>
           </Route>
           {userService.getUser() ? 
             <> 

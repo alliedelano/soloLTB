@@ -11,8 +11,18 @@ const s3 = new S3(); // initialize the construcotr
 module.exports = {
   signup,
   login,
-  profile
+  profile,
+  index
 };
+
+async function index(req, res) {
+  try {
+    const users = await User.find({})
+    res.status(200).json({ users: users})
+  } catch (err) {
+    console.log("error getting index of users")
+  }
+}
 
 function signup(req, res) {
   console.log(req.body, req.file)

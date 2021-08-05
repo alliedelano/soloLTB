@@ -29,7 +29,7 @@ export default function WeatherPage({user, handleLogout}){
     
     return(
         <>
-            <MenuBar />
+            <MenuBar user={user}/>
             <Header user={user}/>
             <h2>{dropzone.name} Weather</h2>
             {(loading) ?   <p1>Loading...</p1> :

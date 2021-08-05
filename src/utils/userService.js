@@ -56,11 +56,20 @@ function getProfile(username){
   })
 }
 
+function getAll(){
+  return fetch(BASE_URL, {
+    headers: {
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }
+  }).then(res => res.json())
+}
+
 
 export default {
   signup, 
   logout,
   login,
   getUser,
-  getProfile
+  getProfile,
+  getAll
 };

@@ -85,7 +85,7 @@ export default function AddJumpForm({user, dropzone}){
                        value={disciplines}
                        onChange={e => handleDisciplineChange(e.target.option.name)}
                     /> */}
-                    <Form.Input type="number" name="slots" value={state.slots} onChange={handleChange}/>
+                    <Form.Input placeholder="number of slots" type="number" name="slots" value={state.slots} onChange={handleChange}/>
                     <Form.TextArea placeholder='Describe the jump' name='description' value={state.description} onChange={handleChange}/>
                     
                     <Button
