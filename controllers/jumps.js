@@ -3,7 +3,8 @@ const Jump = require('../models/jump');
 module.exports = {
     create,
     index,
-    findJumpers
+    findJumpers,
+    deleteJump
 }
 
 async function findJumpers(req, res){
@@ -36,5 +37,15 @@ async function create(req, res){
     } catch (err) {
         console.log(err, "error in controller");
         res.json({ err })
+    }
+}
+
+async function deleteJump(req, res){
+    try {
+        console.log(req.params.jumpId)
+        await Jump.findByIdAndRemove(req.params.jumpId)
+        res.json({data: 'jump removed'})
+    } catch(err){
+        console.log(err, "error deleting jump")
     }
 }

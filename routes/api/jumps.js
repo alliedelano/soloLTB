@@ -7,6 +7,7 @@ const upload = multer();
 
 router.post('/', upload.none(), jumpsCtrl.create);
 router.get('/', jumpsCtrl.index);
-router.get('/:jumpId', jumpsCtrl.findJumpers)
+router.get('/:jumpId', jumpsCtrl.findJumpers);
+router.delete('/:jumpId', jumpsCtrl.deleteJump);
 
 module.exports = router;

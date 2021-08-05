@@ -8,7 +8,7 @@ export default function MenuBar(){
     return(
         <>
             
-            <Menu fluid widths={5}>
+            <Menu fluid widths={5} pointing>
                 <Menu.Item>
                     <Link to="/"><Icon name="home" size="large" /></Link>
                 </Menu.Item>

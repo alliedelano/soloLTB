@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Icon, Image, Segment, Dimmer, Loader } from "semantic-ui-react";
+import { Card, Icon, Image, Segment, Dimmer, Loader, Button} from "semantic-ui-react";
 import {Link} from 'react-router-dom'
 import * as jumpApi from '../../utils/jumpApi'
 
-export default function JumpCard({jump, addJumper, removeJumper, user}){
+export default function JumpCard({jump, addJumper, removeJumper, user, deleteJump}){
 
     //const [jumpers, setJumpers] = useState(jump.jumpers)
     const [loading, setLoading] = useState(false)
@@ -12,6 +12,11 @@ export default function JumpCard({jump, addJumper, removeJumper, user}){
 
     const clickHandler = onJump > -1 ? () => removeJumper(jump.jumpers[onJump]._id): () => addJumper(jump._id)
     const icon = onJump > -1 ? 'minus' : 'plus'
+
+    function handleSubmit(e){
+        e.preventDefault()
+        deleteJump(jump._id)
+    }
 
     // async function getJumpers(){
     //     try{
@@ -45,6 +50,7 @@ export default function JumpCard({jump, addJumper, removeJumper, user}){
                     <Card.Description>{jump.description}</Card.Description>
                     <Card.Description>Organized by: {jump.username}</Card.Description>
                     <Card.Description>{jump.dzName}</Card.Description>
+                    {(jump.organizer === user._id) ? <Button onClick={handleSubmit}>Delete Jump</Button> : null }
                 </Card.Content>
                 <Card.Content>
                     {jump.jumpers.map((jumper) => {

@@ -40,15 +40,23 @@ export default function Feed({user, handleLogout}){
         }
     }
 
+    async function deleteJump(jumpId){
+        try {
+            const data = await jumpApi.deleteJump(jumpId);
+            getJumps()
+        } catch (err){
+            console.log(err)
+        }
+    }
+
 
 
     useEffect(() => {
         getJumps();
     }, [])
 
-    // useEffect(() => {
-    //     getJumps();
-    // }, [jumps])
+    useEffect(() => {
+    }, [jumps])
 
 
     return(
@@ -57,7 +65,7 @@ export default function Feed({user, handleLogout}){
             <Header user={user}/>
             <h3>Here's what's happening at your DZ! (RIGHT NOW ALL DZs)</h3>
             <br />
-            <JumpFeed user={user} jumps={jumps} loading={loading} addJumper={addJumper} removeJumper={removeJumper}/>
+            <JumpFeed user={user} jumps={jumps} loading={loading} addJumper={addJumper} removeJumper={removeJumper} deleteJump={deleteJump}/>
             <Footer user={user} handleLogout={handleLogout}/>
         </>
 

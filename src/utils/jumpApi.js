@@ -29,3 +29,15 @@ export function findJumpers(jumpId){
 	  new Error('cannot find jump');
     })
 }
+
+export function deleteJump(jumpId){
+    return fetch(`${BASE_URL}${jumpId}`, {
+        method: 'DELETE',
+		headers: {
+			'Authorization': 'Bearer ' + tokenService.getToken()
+        }
+    }).then(res => {
+		if(res.ok) return res.json()
+	  new Error('error with delete');
+	})
+}
