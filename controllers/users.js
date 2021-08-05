@@ -68,11 +68,13 @@ async function login(req, res) {
 async function profile(req, res){
   console.log(req.params, "<-- req.params")
   try {
+    const date = new Date()
+    const today = new Date(date.toISOString());
     const user = await User.findOne({username: req.params.username})
     if(!user) res.status(404).json({message: 'no username match'})
     const dropzone = await Dropzone.findOne({_id: user.homeDz})
-    const orgJumps = await Jump.find({organizer: user._id})
-    const joinedJumps = await Jump.find({'jumpers.userId': user._id})
+    const orgJumps = await Jump.find({organizer: user._id, date: {$gte: today}})
+    const joinedJumps = await Jump.find({'jumpers.userId': user._id, date: {$gte: today}})
     console.log(dropzone)
     res.status(200).json({dropzone: dropzone, user: user, orgJumps: orgJumps, joinedJumps: joinedJumps})
   } catch(err){

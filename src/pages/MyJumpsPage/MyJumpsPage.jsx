@@ -60,7 +60,6 @@ export default function MyJumpsPage({user, handleLogout}){
     async function getProfile() {
         try {
             const data = await userService.getProfile(user.username);
-            setLoading(() => false);
             setProfileUser(() => data.user);
             setProfileDz(() => data.dropzone)
             setOrgJumps(() => data.orgJumps)
@@ -72,11 +71,7 @@ export default function MyJumpsPage({user, handleLogout}){
         }
     }
     
-    useEffect(() => {
-        getProfile();
-    }, [])
     
-
     async function getJumps(){
         try {
             const data = await jumpApi.getAll();

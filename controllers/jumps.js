@@ -19,7 +19,9 @@ async function findJumpers(req, res){
 
 async function index(req, res){
     try {
-        const jumps = await Jump.find({}).populate("user").exec();
+        const date = new Date()
+        const today = new Date(date.toISOString());
+        const jumps = await Jump.find({date: {$gte: today}}).sort('date').populate("user").exec();
         res.status(200).json({ jumps })
     } catch (err) {
         console.log("error getting index of jumps")
