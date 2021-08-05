@@ -4,14 +4,27 @@ import { Button, Dropdown, Form, Grid, Header, Image, Segment, Icon, Dimmer, Loa
 import userService from '../../utils/userService'
 
 
-export default function AddPermissionForm({user, allUsers, handleAddPermission}){
+export default function AddPermissionForm({user, handleAddPermission}){
 
     const [permissionTypes] = useState([
         {key: 1, label: 'admin', value: 'admin'},
         {key: 2, label: 'dz organizer', value: 'dz organizer'}
     ])
+
+    const [permissions, setPermissions] = useState({})
+    const [allUsers, setAllUsers] = useState([]);
     
-    const [selectedUser, setSelectedUser] = useState(allUsers[0]._id)
+    async function getUsers(){
+        try {
+            const data = await userService.getAll()
+            setAllUsers([...data.users]);
+            setSelectedUser(data.users[0]._id)
+        } catch (err) {
+            console.log(err, ' error loading users')
+        }
+    }
+
+    const [selectedUser, setSelectedUser] = useState('')
     const [selectedPermission, setSelectedPermission] = useState(permissionTypes[0].value)
 
     const history = useHistory()
@@ -28,6 +41,10 @@ export default function AddPermissionForm({user, allUsers, handleAddPermission})
         handleAddPermission(formData)
         history.push('/admin')
     }
+
+    useEffect(() => {
+        getUsers();
+    }, [])
 
 
     return(

@@ -10,23 +10,8 @@ import userService from '../../utils/userService'
 
 export default function AdminPage({user}){
     
-    const [permissions, setPermissions] = useState({})
-    const [allUsers, setAllUsers] = useState([]);
-    const [loading, setLoading] = useState(true)
     
-    async function getUsers(){
-        try {
-            const data = await userService.getAll()
-            setAllUsers([...data.users]);
-            setLoading(false)
-        } catch (err) {
-            console.log(err, ' error loading users')
-        }
-    }
-
-    useEffect(() => {
-        getUsers();
-    }, [])
+    const [loading, setLoading] = useState(true)
 
     
 
@@ -44,7 +29,7 @@ export default function AdminPage({user}){
         <>
             <h1>Admin Page</h1>
             <AddDropzoneForm handleAddDropzone={handleAddDropzone} />
-            <AddPermissionForm user={user} allUsers={allUsers} handleAddPermission={handleAddPermission}/>
+            <AddPermissionForm user={user} handleAddPermission={handleAddPermission}/>
             
         </>
         
