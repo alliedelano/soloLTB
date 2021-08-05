@@ -49,7 +49,7 @@ export default function AddJumpForm({user, dropzone}){
         }
         try {
             await jumpApi.create(formData);
-            history.push('/')
+            history.push('/myjumps')
             
         } catch(err){
             console.log(err.message)

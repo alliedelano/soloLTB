@@ -23,7 +23,8 @@ export default function MenuBar({user}){
             setWidths(6)
             setLoading(false)
         } else {
-            history.push('/')
+            setLoading(false)
+
         }
         
       } catch (err){
