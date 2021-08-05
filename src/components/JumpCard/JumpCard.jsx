@@ -3,7 +3,7 @@ import { Card, Icon, Image, Segment, Dimmer, Loader, Button} from "semantic-ui-r
 import {Link} from 'react-router-dom'
 import * as jumpApi from '../../utils/jumpApi'
 
-export default function JumpCard({jump, addJumper, removeJumper, user, deleteJump}){
+export default function JumpCard({jump, addJumper, removeJumper, user, deleteJump, today, feedUser}){
 
     //const [jumpers, setJumpers] = useState(jump.jumpers)
     const [loading, setLoading] = useState(false)
@@ -35,14 +35,15 @@ export default function JumpCard({jump, addJumper, removeJumper, user, deleteJum
     return(
         <>
             <Card key={jump._id}>
-            {/* {loading ? (
+            {loading ? (
                 <Segment>
                     <Dimmer active inverted>
                         <Loader size="small">Loading</Loader>
                     </Dimmer>
                     <Image src="https://react.semantic-ui.com/images/wireframe/short-paragraph.png" />
                 </Segment>
-            ) : null} */}
+            ) : null}
+            
                 <Card.Content>
                     <Card.Header>{jump.name}</Card.Header>
                     <Card.Description>{jump.date}</Card.Description>
@@ -61,7 +62,7 @@ export default function JumpCard({jump, addJumper, removeJumper, user, deleteJum
                     Jumpers: {jump.jumpers.length} / {parseInt(jump.slots)}
                     { (jump.jumpers.length === parseInt(jump.slots) ? <h5>Jump Full!</h5>:<h5>More spots available!</h5>)}
                     <Icon name={icon} size="large" onClick={clickHandler} />
-                </Card.Content>
+                </Card.Content> 
             </Card>
         </>
     )

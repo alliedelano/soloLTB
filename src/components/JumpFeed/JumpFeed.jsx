@@ -1,9 +1,19 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import JumpCard from '../../components/JumpCard/JumpCard'
 import { Card, Loader, Dimmer, Segment, Image } from 'semantic-ui-react';
 
 
-export default function JumpFeed({user, jumps, loading, addJumper, removeJumper, isProfile, deleteJump}){
+export default function JumpFeed({user, jumps, loading, addJumper, removeJumper, isProfile, deleteJump, feedUser}){
+    
+    const [today, setToday] = useState('')
+    
+
+    useEffect(() => {
+        let date = new Date()
+        console.log(date)
+        setToday(date)
+    }, [])
+
     return(
         <>
     <Card.Group stackable>
@@ -16,7 +26,7 @@ export default function JumpFeed({user, jumps, loading, addJumper, removeJumper,
         </Segment>
       ) : null}
       {jumps.map((jump) => {
-        return (
+          return ( 
           <JumpCard
             jump={jump}
             key={jump._id}
@@ -25,8 +35,10 @@ export default function JumpFeed({user, jumps, loading, addJumper, removeJumper,
             addJumper={addJumper}
             removeJumper={removeJumper}
             deleteJump={deleteJump}
+            today={today}
+            feedUser={feedUser}
           />
-        );
+          );
       })}
     </Card.Group>
             

@@ -65,7 +65,7 @@ export default function Feed({user, handleLogout}){
             <Header user={user}/>
             <h3>Here's what's happening at your DZ! (RIGHT NOW ALL DZs)</h3>
             <br />
-            <JumpFeed user={user} jumps={jumps} loading={loading} addJumper={addJumper} removeJumper={removeJumper} deleteJump={deleteJump}/>
+            <JumpFeed user={user} feedUser={user} jumps={jumps} loading={loading} addJumper={addJumper} removeJumper={removeJumper} deleteJump={deleteJump}/>
             <Footer user={user} handleLogout={handleLogout}/>
         </>
 

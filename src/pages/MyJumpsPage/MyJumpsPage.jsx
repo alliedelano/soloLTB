@@ -32,7 +32,7 @@ export default function MyJumpsPage({user, handleLogout}){
     async function addJumper(jumpId){
         try {
             const data = await jumperApi.addJumper(jumpId);
-            getJumps();
+            getProfile();
         } catch (err) {
             console.log(err);
         }
@@ -41,9 +41,18 @@ export default function MyJumpsPage({user, handleLogout}){
     async function removeJumper(jumperId){
         try {
             const data = await jumperApi.removeJumper(jumperId);
-            getJumps()
+            getProfile()
         } catch (err) {
             console.log(err);
+        }
+    }
+
+    async function deleteJump(jumpId){
+        try {
+            const data = await jumpApi.deleteJump(jumpId);
+            getProfile()
+        } catch (err){
+            console.log(err)
         }
     }
 
@@ -82,6 +91,9 @@ export default function MyJumpsPage({user, handleLogout}){
         getProfile();
     }, [])
 
+    useEffect(() => {
+    }, [joinedJumps])
+
     
     return(
         <>
@@ -89,7 +101,15 @@ export default function MyJumpsPage({user, handleLogout}){
             <Header user={user}/>
             <h5>Here are your jumps:</h5>
             <br />
-            <JumpFeed user={profileUser} jumps={joinedJumps} loading={loading} addJumper={addJumper} removeJumper={removeJumper}/>
+            <JumpFeed 
+                user={user}
+                feedUser={profileUser} 
+                jumps={joinedJumps} 
+                loading={loading} 
+                addJumper={addJumper} 
+                removeJumper={removeJumper}
+                deleteJump={deleteJump}
+                />
             <Footer user={user} handleLogout={handleLogout}/>
         </>
     )

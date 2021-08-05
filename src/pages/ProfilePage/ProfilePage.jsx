@@ -8,6 +8,7 @@ import JumpFeed from '../../components/JumpFeed/JumpFeed'
 import { Grid, Loader } from 'semantic-ui-react'
 import * as jumpApi from '../../utils/jumpApi'
 import * as jumperApi from '../../utils/jumperApi'
+import Header from '../../components/Header/Header'
 
 
 export default function ProfilePage({user, handleLogout}){
@@ -33,7 +34,7 @@ export default function ProfilePage({user, handleLogout}){
     async function addJumper(jumpId){
         try {
             const data = await jumperApi.addJumper(jumpId);
-            getJumps();
+            getProfile();
         } catch (err) {
             console.log(err);
         }
@@ -42,12 +43,20 @@ export default function ProfilePage({user, handleLogout}){
     async function removeJumper(jumperId){
         try {
             const data = await jumperApi.removeJumper(jumperId);
-            getJumps()
+            getProfile()
         } catch (err) {
             console.log(err);
         }
     }
 
+    async function deleteJump(jumpId){
+        try {
+            const data = await jumpApi.deleteJump(jumpId);
+            getProfile()
+        } catch (err){
+            console.log(err)
+        }
+    }
 
     const { username } = useParams();
 
@@ -65,6 +74,7 @@ export default function ProfilePage({user, handleLogout}){
             setError("Profile does not exist")
         }
     }
+
     
     useEffect(() => {
         getProfile();
@@ -73,6 +83,9 @@ export default function ProfilePage({user, handleLogout}){
     useEffect(() => {
         getProfile();
     }, [username])
+
+    useEffect(() => {
+    }, [joinedJumps])
 
     
 
@@ -105,9 +118,19 @@ export default function ProfilePage({user, handleLogout}){
     return(
         <>
             <MenuBar user={user}/>
+            <Header user={user}/>
             <ProfileBio user={profileUser} dropzone={profileDz}/>
             <br />
-            <JumpFeed user={profileUser} isProfile ={true} jumps={joinedJumps} loading={loading} addJumper={addJumper} removeJumper={removeJumper}/>
+            <JumpFeed 
+                user={user}
+                feedUser={profileUser} 
+                isProfile ={true} 
+                jumps={joinedJumps} 
+                loading={loading} 
+                addJumper={addJumper} 
+                removeJumper={removeJumper}
+                deleteJump={deleteJump}
+                />
             <Footer user={user} handleLogout={handleLogout}/>
         </>
     )
