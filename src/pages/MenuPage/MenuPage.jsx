@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom'
 export default function MenuPage({user, handleLogout}){
     return(
         <>
-            <MenuBar />
+            <MenuBar user={user} />
             <Header user={user}/>
             <br />
             <Link to="/dzfeed"><h4><Icon name="users" size="huge"></Icon>  <br />See what's up at the DZ</h4></Link>

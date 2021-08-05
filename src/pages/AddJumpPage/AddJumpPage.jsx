@@ -48,7 +48,7 @@ export default function AddJumpPage({user, handleLogout}){
 
     return(
         <>
-            <MenuBar />
+            <MenuBar user={user} />
             <AddJumpForm user={user} dropzone={dropzone} />
             <Footer user={user} handleLogout={handleLogout} />
         </>

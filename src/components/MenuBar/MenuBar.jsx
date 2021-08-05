@@ -57,7 +57,7 @@ export default function MenuBar({user}){
                 </Menu.Item>
                 {admin ? 
                 <Menu.Item>
-                    <Link to="/newjump"><Icon name="cog" size="large"/></Link>
+                    <Link to="/admin"><Icon name="cog" size="large"/></Link>
                 </Menu.Item>
                 : ""}
             </Menu> }

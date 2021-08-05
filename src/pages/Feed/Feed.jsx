@@ -50,6 +50,9 @@ export default function Feed({user, handleLogout}){
         }
     }
 
+    useEffect(() => {
+        getJumps()
+    }, [])
 
     return(
         <>
