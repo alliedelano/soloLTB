@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useHistory} from 'react-router-dom'
-import {Menu, Icon} from 'semantic-ui-react'
+import {Menu, Icon, Container, Sticky} from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
 import * as permissionApi from '../../utils/permissionApi'
 
@@ -40,6 +40,12 @@ export default function MenuBar({user}){
     return(
         <>
             {loading ? <h1>Loading...</h1> :
+            <Container 
+            style={{
+                position: 'sticky',
+                top: 0
+            }}>
+            <Sticky >
             <Menu fluid widths={widths}>
                 <Menu.Item>
                     <Link to="/"><Icon name="home" size="large" /></Link>
@@ -61,7 +67,9 @@ export default function MenuBar({user}){
                     <Link to="/admin"><Icon name="cog" size="large"/></Link>
                 </Menu.Item>
                 : ""}
-            </Menu> }
+            </Menu> 
+            </Sticky>
+            </Container>}
         </>
     )
 }
