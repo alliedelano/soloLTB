@@ -18,19 +18,7 @@ export default function JumpCard({jump, addJumper, removeJumper, user, deleteJum
         deleteJump(jump._id)
     }
 
-    // async function getJumpers(){
-    //     try{
-    //         const data = await jumpApi.findJumpers(jump._id);
-    //         setJumpers([...data.jumpers])
-    //         //setLoading(false)
-    //     } catch (err) {
-    //         console.log(err)
-    //     }
-    // }
 
-    // useEffect(() => {
-    //     getJumpers()
-    // }, [])
 
     return(
         <>
@@ -46,7 +34,9 @@ export default function JumpCard({jump, addJumper, removeJumper, user, deleteJum
             
                 <Card.Content>
                     <Card.Header>{jump.name}</Card.Header>
-                    <Card.Description>{jump.date}</Card.Description>
+                    <Card.Description>
+                        {new Date((jump.date).replace(/-/g, '\/').replace(/T.+/, '')).toDateString()}
+                    </Card.Description>
                     <Card.Description>{jump.slots}-way</Card.Description>
                     <Card.Description>{jump.description}</Card.Description>
                     <Card.Description>Organized by: {jump.username}</Card.Description>

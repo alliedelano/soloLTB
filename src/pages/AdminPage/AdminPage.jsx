@@ -6,11 +6,12 @@ import * as permissionApi from '../../utils/permissionApi'
 import userService from '../../utils/userService'
 import MenuBar from '../../components/MenuBar/MenuBar'
 import {useHistory} from 'react-router-dom'
+import Footer from '../../components/Footer/Footer'
 
 
 
 
-export default function AdminPage({user}){
+export default function AdminPage({user, handleLogout}){
     
     
     const [loading, setLoading] = useState(true)
@@ -56,7 +57,9 @@ export default function AdminPage({user}){
             <MenuBar user={user}/>
             <h1>Admin Page</h1>
             <AddDropzoneForm handleAddDropzone={handleAddDropzone} />
-            <AddPermissionForm user={user} handleAddPermission={handleAddPermission}/> </> }
+            <AddPermissionForm user={user} handleAddPermission={handleAddPermission}/> 
+            <Footer user={user} handleLogout={handleLogout} />
+            </> }
         </>
         
     )
