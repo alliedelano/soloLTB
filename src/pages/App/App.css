@@ -38,12 +38,3 @@
   }
 }
 
-.App.sticky-footer{
-  margin-top: auto
-}
-
-.App.sticky-wrap{
-	display:flex;
-	flex-direction:column;
-	min-height:100vh
-}

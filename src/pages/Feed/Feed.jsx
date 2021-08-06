@@ -58,7 +58,7 @@ export default function Feed({user, handleLogout}){
         <>
             <MenuBar user={user}/>
             <Header user={user}/>
-            <h3>Here's what's happening at your DZ! (RIGHT NOW ALL DZs)</h3>
+            <h3>Here's what's coming up at your home DZ!</h3>
             <br />
             <JumpFeed user={user} feedUser={user} jumps={jumps} loading={loading} addJumper={addJumper} removeJumper={removeJumper} deleteJump={deleteJump}/>
             <Footer user={user} handleLogout={handleLogout}/>
