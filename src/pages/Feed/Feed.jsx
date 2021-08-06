@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import JumpFeed from '../../components/JumpFeed/JumpFeed'
 import MenuBar from '../../components/MenuBar/MenuBar'
-import Header from '../../components/Header/Header'
+import HeaderComp from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import * as jumpApi from '../../utils/jumpApi';
 import * as jumperApi from '../../utils/jumperApi'
 import * as permissionApi from '../../utils/permissionApi'
+import "./Feed.css"
 
 
 export default function Feed({user, handleLogout}){
@@ -56,12 +57,15 @@ export default function Feed({user, handleLogout}){
 
     return(
         <>
-            <MenuBar user={user}/>
-            <Header user={user}/>
-            <h3>Here's what's coming up at your home DZ!</h3>
+            <HeaderComp user={user} handleLogout={handleLogout}/>
+            <br />
+            <div className="feed">
+                <br />
+            <h3 className="page-message">Here's the scoop at your DZ!</h3>
             <br />
             <JumpFeed user={user} feedUser={user} jumps={jumps} loading={loading} addJumper={addJumper} removeJumper={removeJumper} deleteJump={deleteJump}/>
-            <Footer user={user} handleLogout={handleLogout}/>
+            </div>
+            <Footer user={user}/>
         </>
 
     )

@@ -1,0 +1,14 @@
+.feed {
+    background-image: url("../../images/highPlane.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 900px;
+    background-position: center;
+}
+
+.page-message {
+    font-size: 30px;
+    color: white;
+}
+

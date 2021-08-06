@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import MenuBar from '../../components/MenuBar/MenuBar'
-import Header from '../../components/Header/Header'
+import HeaderComp from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import dropzoneApi from '../../utils/dropzoneApi'
 import weatherApi from '../../utils/weatherApi'
 import WeatherFeed from '../../components/WeatherFeed/WeatherFeed'
 import { findAllByTestId } from '@testing-library/react';
+import {Divider} from 'semantic-ui-react'
+import './WeatherPage.css'
 
 export default function WeatherPage({user, handleLogout}){
     
@@ -29,12 +31,15 @@ export default function WeatherPage({user, handleLogout}){
     
     return(
         <>
-            <MenuBar user={user}/>
-            <Header user={user}/>
-            <h2>{dropzone.name} Weather</h2>
+            <HeaderComp user={user} handleLogout={handleLogout}/>
+            <br />
+            <div className="weatherFeed">
+                <h2 className="dzTitle">{dropzone.name} Weather</h2>
+                <br />
             {(loading) ?   <p1>Loading...</p1> :
                 <WeatherFeed weather={weather} loading={loading}/>}
-            <Footer user={user} handleLogout={handleLogout}/>
+            </div>
+            <Footer user={user} />
         </>
     )
 }

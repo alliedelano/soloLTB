@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import AddJumpForm from "../../components/AddJumpForm/AddJumpForm"
-import MenuBar from '../../components/MenuBar/MenuBar'
+import HeaderComp from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import userEvent from '@testing-library/user-event';
 import dropzoneApi from '../../utils/dropzoneApi'
 import { Grid, Loader } from 'semantic-ui-react'
-
+import './AddJumpPage.css'
 
 export default function AddJumpPage({user, handleLogout}){
     const [dropzone, setDropzone] = useState({})
@@ -48,9 +48,13 @@ export default function AddJumpPage({user, handleLogout}){
 
     return(
         <>
-            <MenuBar user={user} />
+            <HeaderComp user={user} handleLogout={handleLogout}/>
+            <br />
+            <div className="add-jump">
+              <br />
             <AddJumpForm user={user} dropzone={dropzone} />
-            <Footer user={user} handleLogout={handleLogout} />
+            </div>
+            <Footer user={user} />
         </>
     )
 }

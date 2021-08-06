@@ -1,0 +1,9 @@
+.my-jumps {
+    background-image: url("../../images/highPlane.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 900px;
+    background-position: center;
+}
+

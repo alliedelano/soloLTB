@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
-import { Button, Dropdown, Form, Grid, Header, Image, Segment } from 'semantic-ui-react';
+import { Button, Dropdown, Form, Grid, Header, Image, Segment, Icon } from 'semantic-ui-react';
 import { useHistory } from 'react-router-dom';
-import DisciplineSelector from '../../components/DisciplineSelector/DisciplineSelector'
 import * as jumpApi from '../../utils/jumpApi'
 
 export default function AddJumpForm({user, dropzone}){
@@ -61,11 +60,14 @@ export default function AddJumpForm({user, dropzone}){
 
     return(
         <>  
-        <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+        <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='top'>
           <Grid.Column style={{ maxWidth: 450 }}>
-              <Header as='h2' color='teal' textAlign='center'>
-                 Add a Jump  
-              </Header>            
+                <br />
+                <Segment raised>
+                  <Header as="h2" color="blue" textAlign="center" inverted>
+                    <Icon name="plane" /> Organize a Jump
+                  </Header>
+                </Segment>    
                 <Form autoComplete="off"  onSubmit={handleSubmit}>
                 <Segment stacked>               
                     <Form.Input
@@ -80,17 +82,17 @@ export default function AddJumpForm({user, dropzone}){
                        value={date}
                        onChange={e => setDate(e.target.value)}
                     />
-                    {/* <DisciplineSelector 
-                       name="disciplines"
-                       value={disciplines}
-                       onChange={e => handleDisciplineChange(e.target.option.name)}
-                    /> */}
+                    
                     <Form.Input placeholder="number of slots" type="number" name="slots" value={state.slots} onChange={handleChange}/>
                     <Form.TextArea placeholder='Describe the jump' name='description' value={state.description} onChange={handleChange}/>
                     
                     <Button
+                      color="blue"
+                      fluid
+                      size="large"
                       type="submit"
                       className="btn"
+                      inverted
                     >
                     Add Jump
                   </Button>

@@ -8,7 +8,7 @@ import JumpFeed from '../../components/JumpFeed/JumpFeed'
 import { Grid, Loader } from 'semantic-ui-react'
 import * as jumpApi from '../../utils/jumpApi'
 import * as jumperApi from '../../utils/jumperApi'
-import Header from '../../components/Header/Header'
+import HeaderComp from '../../components/Header/Header'
 
 
 export default function ProfilePage({user, handleLogout}){
@@ -117,8 +117,7 @@ export default function ProfilePage({user, handleLogout}){
 
     return(
         <>
-            <MenuBar user={user}/>
-            <Header user={user}/>
+            <HeaderComp user={user} handleLogout={handleLogout}/>
             <ProfileBio user={profileUser} dropzone={profileDz}/>
             <br />
             <JumpFeed 
@@ -131,7 +130,7 @@ export default function ProfilePage({user, handleLogout}){
                 removeJumper={removeJumper}
                 deleteJump={deleteJump}
                 />
-            <Footer user={user} handleLogout={handleLogout}/>
+            <Footer user={user} />
         </>
     )
 }

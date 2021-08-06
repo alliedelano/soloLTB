@@ -1,7 +1,8 @@
 import React, {createRef} from 'react';
 import {Menu, Icon, Image, Sticky, Segment, Container} from 'semantic-ui-react';
-import {Link} from 'react-router-dom'
 import "./Footer.css";
+import {Link} from 'react-router-dom'
+
 
 export default function Footer({user, handleLogout}){
     const contextRef = createRef()
@@ -12,13 +13,20 @@ export default function Footer({user, handleLogout}){
             bottom: 0
         }}>
         <Sticky pushing >
-        <Menu fluid widths={2} >
+        <Menu fluid widths={4} >
+            
             <Menu.Item>
-               <Link to={`/${user.username}`}>{user.photoUrl ? <Image src={user.photoUrl} circular size="tiny"/> : <Icon name="user circle" size="large" />}</Link>
-            </Menu.Item>
-            <Menu.Item>
-                <Icon name="logout" size="large" onClick={handleLogout} color="blue"/>
-            </Menu.Item>
+                    <Link to="/dzfeed"><Icon name="users" size="large"/></Link>
+                </Menu.Item>
+                <Menu.Item>
+                    <Link to="/weather"><Icon name="sun" size="large"/></Link>
+                </Menu.Item>
+                <Menu.Item>
+                    <Link to="/myjumps"><Icon name="calendar alternate" size="large"/></Link>
+                </Menu.Item>
+                <Menu.Item>
+                    <Link to="/newjump"><Icon name="plane" size="large"/></Link>
+                </Menu.Item>
         </Menu>
         </Sticky>
         </Container>

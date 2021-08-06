@@ -1,16 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import {useHistory} from 'react-router-dom'
-import {Menu, Icon, Container, Sticky} from 'semantic-ui-react'
+import {Menu, Icon, Container, Sticky, Image} from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
 import * as permissionApi from '../../utils/permissionApi'
+import logo from '../../images/SoloLTBlogo.png'
 
-export default function MenuBar({user}){
+export default function MenuBar({user, handleLogout}){
 
     const [loading, setLoading] = useState(true)
 
     const [permissions, setPermissions] = useState([])
     const [admin, setAdmin] = useState(false)
-    const [widths, setWidths] = useState(5)
+    const [widths, setWidths] = useState(3)
 
     const history = useHistory()
 
@@ -20,7 +21,7 @@ export default function MenuBar({user}){
         if (data.permissions.length) {
             setPermissions([...data.permissions])
             setAdmin(true)
-            setWidths(6)
+            setWidths(4)
             setLoading(false)
         } else {
             setLoading(false)
@@ -45,28 +46,26 @@ export default function MenuBar({user}){
                 position: 'sticky',
                 top: 0
             }}>
-            <Sticky >
-            <Menu fluid widths={widths}>
-                <Menu.Item>
-                    <Link to="/"><Icon name="home" size="large" /></Link>
-                </Menu.Item>
-                <Menu.Item>
-                    <Link to="/dzfeed"><Icon name="users" size="large"/></Link>
-                </Menu.Item>
-                <Menu.Item>
-                    <Link to="/weather"><Icon name="sun" size="large"/></Link>
-                </Menu.Item>
-                <Menu.Item>
-                    <Link to="/myjumps"><Icon name="calendar alternate" size="large"/></Link>
-                </Menu.Item>
-                <Menu.Item>
-                    <Link to="/newjump"><Icon name="plane" size="large"/></Link>
-                </Menu.Item>
+            <Sticky pushing>
+            <Menu widths={widths}>
+            <Menu.Item>
+               <Link to={`/${user.username}`}>{user.photoUrl ? <Image src={user.photoUrl} circular size="mini"/> : <Icon name="user circle" size="large" />}</Link>
+               Hi, {user.firstName}!
+            </Menu.Item>
+            <Menu.Item >
+                <div id="logo">
+                    <Image src={logo} />
+                </div>
+            </Menu.Item>
+                
                 {admin ? 
                 <Menu.Item>
                     <Link to="/admin"><Icon name="cog" size="large"/></Link>
                 </Menu.Item>
                 : ""}
+            <Menu.Item>
+                Log Out <Icon name="logout" size="large" onClick={handleLogout} color="blue"/>
+            </Menu.Item>
             </Menu> 
             </Sticky>
             </Container>}

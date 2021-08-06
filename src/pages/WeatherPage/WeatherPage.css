@@ -1,0 +1,14 @@
+.weatherFeed {
+    background-image: url("../../images/highPlane.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 900px;
+    background-position: center;
+}
+
+.dzTitle {
+    color: white;
+    font-size: 30px;
+
+}

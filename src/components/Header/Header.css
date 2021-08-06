@@ -1,6 +1,26 @@
-.Header {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
+.page-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+    margin: 0px 0px 0px 0px;
+    height: 8vh;
+    background-color: white;
 }
+
+.logo {
+    max-height: 100%;
+}
+
+.header-avatar {
+    margin: 2vh auto auto auto;
+}
+
+.logout {
+    margin-top: 1vh;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+

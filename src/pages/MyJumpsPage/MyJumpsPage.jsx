@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react'
 import userService from '../../utils/userService'
 import { useParams } from 'react-router-dom'
 import MenuBar from '../../components/MenuBar/MenuBar'
-import Header from '../../components/Header/Header'
+import HeaderComp from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import JumpFeed from '../../components/JumpFeed/JumpFeed'
 import * as jumpApi from '../../utils/jumpApi'
 import * as jumperApi from '../../utils/jumperApi'
 import { Grid, Loader } from 'semantic-ui-react'
+import './MyJumpsPage.css'
 
 export default function MyJumpsPage({user, handleLogout}){
     const [jumps, setJumps] = useState([])
@@ -92,10 +93,10 @@ export default function MyJumpsPage({user, handleLogout}){
     
     return(
         <>
-            <MenuBar user={user}/>
-            <Header user={user}/>
-            <h5>Here are your jumps:</h5>
+            <HeaderComp user={user} handleLogout={handleLogout}/>
             <br />
+            <div className="my-jumps">
+            <h3 className="page-message">Here are your jumps:</h3>
             <JumpFeed 
                 user={user}
                 feedUser={profileUser} 
@@ -105,7 +106,8 @@ export default function MyJumpsPage({user, handleLogout}){
                 removeJumper={removeJumper}
                 deleteJump={deleteJump}
                 />
-            <Footer user={user} handleLogout={handleLogout}/>
+            </div>
+            <Footer user={user}/>
         </>
     )
 }

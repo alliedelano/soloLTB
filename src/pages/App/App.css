@@ -1,9 +1,9 @@
 .App {
   text-align: center;
-  background-image: url("../../images/IMG_4788.PNG");
-  background-repeat: no-repeat;
-  background-size: 100vw;
+  display: flex;
+  flex-direction: column;
   background-color: black;
+  
 }
 
 .App-logo {

@@ -41,10 +41,6 @@ export default function JumpFeed({user, jumps, loading, addJumper, removeJumper,
           );
       })}
     </Card.Group>
-            
-            <h5>for Profile: The jumps I've joined/organized. Organized diff color or icon on them?</h5>
-            <h5>For feed, all jumps, but if part of/organized, will show up differently for me.</h5>
-
         </>
     )
 }

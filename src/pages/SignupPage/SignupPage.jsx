@@ -93,7 +93,7 @@ export default function SignUpPage(props){
     
 
     return (
-        <>  
+      <div className="login-signup">  
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
           {loading ? (
             <Segment>
@@ -105,19 +105,21 @@ export default function SignUpPage(props){
       ) : null}
           <Grid.Column style={{ maxWidth: 450 }}>
                           
-                <Form autoComplete="off"  onSubmit={handleSubmit}>
+              <Form autoComplete="off"  onSubmit={handleSubmit}>
                 <Segment raised>
                   <Header as="h2" color="blue" textAlign="center" inverted>
-                    <Icon name="plane" /> Sign Up
+                    <Icon name="plane" /> Sign Up 
                   </Header>
                 </Segment>
-                <Segment stacked>               
+                <Segment stacked> 
+                  <Form.Group>             
                     <Form.Input
                       name="firstName"
                       placeholder="first name"
                       value={state.firstName}
                       onChange={handleChange}
                       required
+                      width={8} 
                     />
                     <Form.Input
                       name="lastName"
@@ -125,7 +127,9 @@ export default function SignUpPage(props){
                       value={state.lastName}
                       onChange={handleChange}
                       required
+                      width={8}
                     />
+                  </Form.Group> 
                     <Form.Input
                       type="email"                  
                       name="email"
@@ -163,6 +167,7 @@ export default function SignUpPage(props){
                       value={dropzones.selectValue}
                       onChange={e => setHomeDzValue(e.target.value)}
                     >
+                      <option value="" disabled selected>Home Dropzone</option>
                       {dropzones.map(dz => (
                         <option
                           key={dz._id}
@@ -177,6 +182,7 @@ export default function SignUpPage(props){
                       value={experienceList.selectValue}
                       onChange={e => setExpValue(e.target.value)}
                     >
+                      <option value="" disabled selected>Experience Level</option>
                       {experienceList.map(exp => (
                         <option
                           key={exp.key} 
@@ -209,14 +215,14 @@ export default function SignUpPage(props){
                     Sign Up
                   </Button>
                   </Segment>
-                  {error ? <ErrorMessage error={error} /> : null}
+                  {/* {error ? <ErrorMessage error={error} /> : null} */}
                 </Form>
                 <Message>
             <h4>Already have an account? <Link to="/login">Log In</Link></h4>
           </Message>
             </Grid.Column>
           </Grid>
-        </>
+        </div>
         
         
       );   

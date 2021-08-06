@@ -1,5 +1,5 @@
 import React, { useEffect, useState, } from 'react';
-import './LoginPage.css';
+import './LoginPage.css'
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
 import userService from '../../utils/userService';
 import { useHistory, Link } from 'react-router-dom';
@@ -47,7 +47,8 @@ export default function LoginPage(props){
 
   return (
 
-    <>
+  
+    <div className="login-signup">
       <Grid
         textAlign="center"
         style={{ height: "100vh" }}
@@ -95,7 +96,8 @@ export default function LoginPage(props){
           {error ? <ErrorMessage error={error} /> : null}
         </Grid.Column>
       </Grid>
-    </>
+    </div>
+    
       
   );
 }

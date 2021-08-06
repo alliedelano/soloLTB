@@ -1,0 +1,19 @@
+.menu-page {
+    background-image: url("../../images/highPlane.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 900px;
+    background-position: center;
+}
+
+
+
+
+i.icon.huge.users:before, i.icon.huge.sun:before, i.icon.calendar.alternate.huge:before, i.icon.plane.huge:before {
+    color: white;
+}
+
+h4 {
+    color: white;
+}
