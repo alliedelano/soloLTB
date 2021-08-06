@@ -212,7 +212,7 @@ export default function SignUpPage(props){
                   {error ? <ErrorMessage error={error} /> : null}
                 </Form>
                 <Message>
-            <h4>Already have an account? <Link to="/login">Login</Link></h4>
+            <h4>Already have an account? <Link to="/login">Log In</Link></h4>
           </Message>
             </Grid.Column>
           </Grid>

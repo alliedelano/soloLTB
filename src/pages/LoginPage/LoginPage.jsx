@@ -57,7 +57,7 @@ export default function LoginPage(props){
           <Form autoComplete="off" onSubmit={handleSubmit}>
             <Segment raised>
             <Header as="h2" color="blue" textAlign="center" inverted>
-            <Icon name="plane" /> Log-in to your
+            <Icon name="plane" /> Log in to your
             account
           </Header></Segment>
             <Segment stacked>
@@ -85,7 +85,7 @@ export default function LoginPage(props){
                 className="btn"
                 inverted
               >
-                Login
+                Log In
               </Button>
             </Segment>
           </Form>
