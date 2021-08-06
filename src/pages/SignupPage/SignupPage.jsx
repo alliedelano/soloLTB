@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
-import { Button, Dropdown, Form, Grid, Header, Image, Segment, Icon, Dimmer, Loader, Select } from 'semantic-ui-react';
-import DisciplineSelector from '../../components/DisciplineSelector/DisciplineSelector';
-import DropzoneSelector from '../../components/DropzoneSelector/DropzoneSelector';
+import { Button, Form, Grid, Header, Image, Segment, Icon, Dimmer, Loader, Select, Message} from 'semantic-ui-react';
 import dropzoneApi from '../../utils/dropzoneApi';
-import ExperienceSelector from '../../components/ExperienceSelector/ExperienceSelector'
-
 import userService from '../../utils/userService';
-import { useHistory } from 'react-router-dom';
-import { findAllByTestId } from '@testing-library/react';
+import { useHistory, Link } from 'react-router-dom';
+
 
 
 export default function SignUpPage(props){
@@ -33,17 +29,18 @@ export default function SignUpPage(props){
     // ]
 
     const [experienceList] = useState([
-      { key: '0-50', label: '0-50 Jumps', value: '0-50 jumps'},
-      { key: '51-100', label: '51-100 Jumps', value: '51-100 jumps'},
-      { key: '101-150', label: '101-150 Jumps', value: '101-150 jumps'},
-      { key: '151-200', label: '151-200 Jumps', value: '151-200 jumps'},
+      { key: '0', label: '25+ Jumps', value: '0'},
+      { key: '50', label: '50+ Jumps', value: '50'},
+      { key: '100', label: '100+ Jumps', value: '100'},
+      { key: '200', label: '200+ Jumps', value: '200'},
+      { key: '300', label: '300+ Jumps', value: '300'},
+      { key: '400', label: '400+ Jumps', value: '400'},
+      { key: '500', label: '500+ Jumps', value: '500'},
+      { key: '1000', label: '1000+ Jumps', value: '1000'},
     ])
 
     const [expValue, setExpValue] = useState(experienceList[0].value)  
-    
-    // const dropzoneOptions = dropzones.map(dropzone => (
-    //   {key: dropzone._id, text: dropzone.name, value: dropzone._id}
-    // ))
+  
 
     const [homeDzValue, setHomeDzValue] = useState('')
 
@@ -96,8 +93,7 @@ export default function SignUpPage(props){
     
 
     return (
-        <>
-             
+        <>  
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
           {loading ? (
             <Segment>
@@ -108,10 +104,13 @@ export default function SignUpPage(props){
             </Segment>
       ) : null}
           <Grid.Column style={{ maxWidth: 450 }}>
-              <Header as='h2' color='teal' textAlign='center'>
-                <Icon name="plane" /> Sign Up    
-              </Header>            
+                          
                 <Form autoComplete="off"  onSubmit={handleSubmit}>
+                <Segment raised>
+                  <Header as="h2" color="blue" textAlign="center" inverted>
+                    <Icon name="plane" /> Sign Up
+                  </Header>
+                </Segment>
                 <Segment stacked>               
                     <Form.Input
                       name="firstName"
@@ -160,6 +159,7 @@ export default function SignUpPage(props){
                     />
                   
                     <select
+                      
                       value={dropzones.selectValue}
                       onChange={e => setHomeDzValue(e.target.value)}
                     >
@@ -188,23 +188,6 @@ export default function SignUpPage(props){
                     </select>
                     <br />
                     
-                    
-                    
-                    {/* <Dropdown
-                        selected={experience}
-                        value={experience}
-                        name="experience" 
-                        placeholder='select experience level'
-                        options={experienceOptions}
-                        onClick={() => setExperience(experience)}
-                    /> */}
-                    {/* <Form.Field value={state.disciplines}>
-                      <Dropdown 
-                        name="disciplines"
-                        placeholder='choose disciplines' 
-                        fluid multiple selection options={disciplineOptions} 
-                        onChange={handleChange} />
-                    </Form.Field> */}
                     <Form.TextArea placeholder='Tell everyone a bit about yourself' name="bio" onChange={handleChange}/>
                     <Form.Field> 
                         <Form.Input
@@ -216,15 +199,21 @@ export default function SignUpPage(props){
                         />      
                     </Form.Field>
                     <Button
+                      color="blue"
+                      fluid
+                      size="large"
                       type="submit"
                       className="btn"
+                      inverted
                     >
-                    Signup
+                    Sign Up
                   </Button>
                   </Segment>
                   {error ? <ErrorMessage error={error} /> : null}
                 </Form>
-               
+                <Message>
+            <h4>Already have an account? <Link to="/login">Login</Link></h4>
+          </Message>
             </Grid.Column>
           </Grid>
         </>

@@ -1,6 +1,9 @@
 .App {
   text-align: center;
-  background-color: #DEF7FF;
+  background-image: url("../../images/IMG_4788.PNG");
+  background-repeat: no-repeat;
+  background-size: 100vw;
+  background-color: black;
 }
 
 .App-logo {

@@ -22,7 +22,7 @@ export default function JumpCard({jump, addJumper, removeJumper, user, deleteJum
 
     return(
         <>
-            <Card key={jump._id}>
+            <Card key={jump._id} color='blue'>
             {loading ? (
                 <Segment>
                     <Dimmer active inverted>
@@ -43,7 +43,7 @@ export default function JumpCard({jump, addJumper, removeJumper, user, deleteJum
                     <Card.Description>{jump.dzName}</Card.Description>
                     {(jump.organizer === user._id) ? <Button onClick={handleSubmit}>Delete Jump</Button> : null }
                 </Card.Content>
-                <Card.Content>
+                <Card.Content extra>
                     {jump.jumpers.map((jumper) => {
                         return(
                             <Link to={`/${jumper.username}`}><Image src={`${jumper.userAvatar}`} avatar size="small" /></Link>
