@@ -83,8 +83,8 @@ async function profile(req, res){
     const user = await User.findOne({username: req.params.username})
     if(!user) res.status(404).json({message: 'no username match'})
     const dropzone = await Dropzone.findOne({_id: user.homeDz})
-    const orgJumps = await Jump.find({organizer: user._id, date: {$gte: today}})
-    const joinedJumps = await Jump.find({'jumpers.userId': user._id, date: {$gte: today}})
+    const orgJumps = await Jump.find({organizer: user._id, date: {$gte: today}}).sort('date')
+    const joinedJumps = await Jump.find({'jumpers.userId': user._id, date: {$gte: today}}).sort('date')
     console.log(dropzone)
     res.status(200).json({dropzone: dropzone, user: user, orgJumps: orgJumps, joinedJumps: joinedJumps})
   } catch(err){
