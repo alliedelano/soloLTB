@@ -166,8 +166,9 @@ export default function SignUpPage(props){
                       
                       value={dropzones.selectValue}
                       onChange={e => setHomeDzValue(e.target.value)}
+                      required
                     >
-                      <option value="" disabled selected>Home Dropzone</option>
+                      <option value="" disabled selected>Select Home Dropzone</option>
                       {dropzones.map(dz => (
                         <option
                           key={dz._id}
@@ -181,8 +182,9 @@ export default function SignUpPage(props){
                     <select
                       value={experienceList.selectValue}
                       onChange={e => setExpValue(e.target.value)}
+                      required
                     >
-                      <option value="" disabled selected>Experience Level</option>
+                      <option value="" disabled selected>Select Experience Level</option>
                       {experienceList.map(exp => (
                         <option
                           key={exp.key} 
@@ -194,7 +196,7 @@ export default function SignUpPage(props){
                     </select>
                     <br />
                     
-                    <Form.TextArea placeholder='Tell everyone a bit about yourself' name="bio" onChange={handleChange}/>
+                    <Form.TextArea required placeholder='Tell everyone a bit about yourself' name="bio" onChange={handleChange}/>
                     <Form.Field> 
                         <Form.Input
                           type="file"
@@ -218,7 +220,7 @@ export default function SignUpPage(props){
                   {/* {error ? <ErrorMessage error={error} /> : null} */}
                 </Form>
                 <Message>
-            <h4>Already have an account? <Link to="/login">Log In</Link></h4>
+            <p>Already have an account? <Link to="/login">Log In</Link></p>
           </Message>
             </Grid.Column>
           </Grid>

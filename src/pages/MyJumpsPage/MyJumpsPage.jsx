@@ -94,7 +94,7 @@ export default function MyJumpsPage({user, handleLogout}){
     return(
         <>
             <HeaderComp user={user} handleLogout={handleLogout}/>
-            <br />
+            
             <div className="my-jumps">
             <br />
             <h3 className="page-message">My Jumps</h3>

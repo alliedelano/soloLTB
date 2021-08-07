@@ -21,7 +21,7 @@ async function create(req, res){
 
 async function index(req, res){
     try {
-        const dropzones = await Dropzone.find({});
+        const dropzones = await Dropzone.find({}).sort('name');
         res.status(200).json({ dropzones })
     } catch (err) {}
 }

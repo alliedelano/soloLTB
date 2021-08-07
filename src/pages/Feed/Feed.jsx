@@ -58,7 +58,7 @@ export default function Feed({user, handleLogout}){
     return(
         <>
             <HeaderComp user={user} handleLogout={handleLogout}/>
-            <br />
+            
             <div className="feed">
                <br />
             <h3 className="page-message">Here's the scoop at your DZ!</h3>

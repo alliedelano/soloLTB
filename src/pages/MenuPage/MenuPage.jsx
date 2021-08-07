@@ -10,7 +10,7 @@ export default function MenuPage({user, handleLogout}){
     return(
         <>
             <HeaderComp user={user} handleLogout={handleLogout}/>
-            <br />
+            
             
             <div className="menu-page">
                 <br />

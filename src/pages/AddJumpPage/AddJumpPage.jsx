@@ -49,7 +49,7 @@ export default function AddJumpPage({user, handleLogout}){
     return(
         <>
             <HeaderComp user={user} handleLogout={handleLogout}/>
-            <br />
+           
             <div className="add-jump">
               <br />
             <AddJumpForm user={user} dropzone={dropzone} />
@@ -59,4 +59,3 @@ export default function AddJumpPage({user, handleLogout}){
     )
 }
 
-//loading before function done

@@ -32,7 +32,7 @@ export default function WeatherPage({user, handleLogout}){
     return(
         <>
             <HeaderComp user={user} handleLogout={handleLogout}/>
-            <br />
+            
             <div className="weatherFeed">
                 <br />
                 <h2 className="dzTitle">{dropzone.name} Weather</h2>

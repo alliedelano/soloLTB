@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import {Icon, Grid, Segment, Image} from 'semantic-ui-react'
+import {Link} from 'react-router-dom'
 
-export default function ProfileBio({user, dropzone}){
+export default function ProfileBio({user, dropzone, admin}){
 
     return(
         <>
@@ -25,6 +26,11 @@ export default function ProfileBio({user, dropzone}){
                         <span> {user.bio}</span>
                     </Segment>
                 </Grid.Row>
+                <div className="admin-link">
+                    {admin ? 
+                    <Link to="/admin"><Icon name="cog" size="large"/>Admin Portal</Link> 
+                    : ''}
+                </div>
             </Grid>
             </div>
         </>

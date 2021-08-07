@@ -10,12 +10,14 @@ import * as jumpApi from '../../utils/jumpApi'
 import * as jumperApi from '../../utils/jumperApi'
 import HeaderComp from '../../components/Header/Header'
 import './ProfilePage.css'
+import * as permissionApi from '../../utils/permissionApi'
 
 
 export default function ProfilePage({user, handleLogout}){
     
     const [profileUser, setProfileUser] = useState({});
     const [profileDz, setProfileDz] = useState({})
+    const [admin, setAdmin] = useState(false)
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
     const [allJumps, setAllJumps] = useState([])
@@ -59,6 +61,8 @@ export default function ProfilePage({user, handleLogout}){
         }
     }
 
+    
+
     const { username } = useParams();
 
     async function getProfile() {
@@ -69,12 +73,26 @@ export default function ProfilePage({user, handleLogout}){
             setProfileDz(() => data.dropzone)
             setOrgJumps(() => data.orgJumps)
             setJoinedJumps(() => data.joinedJumps)
+            await getPermissions()
             setLoading(false)
         } catch (err) {
             console.log(err)
             setError("Profile does not exist")
         }
     }
+
+    async function getPermissions(){
+        try {
+          const data = await permissionApi.getPermissions(user._id)
+          if (data.permissions.length) {
+              setAdmin(true)
+          } else {
+              console.log('no permissions')
+          }
+        } catch (err){
+          console.log("error getting permissions")
+        }
+      }
 
     
     useEffect(() => {
@@ -123,14 +141,14 @@ export default function ProfilePage({user, handleLogout}){
             <div className="profile-page">
             <br />
             <br />
-            <ProfileBio user={profileUser} dropzone={profileDz}/>
+            <ProfileBio user={profileUser} dropzone={profileDz} admin={admin}/>
             <br />
             <Divider />
             <br />
+            <h3 className="page-message">Jumps</h3>
             <JumpFeed 
                 user={user}
-                feedUser={profileUser} 
-                isProfile ={true} 
+                feedUser={profileUser}  
                 jumps={joinedJumps} 
                 loading={loading} 
                 addJumper={addJumper} 
