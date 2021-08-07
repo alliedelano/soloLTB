@@ -96,7 +96,10 @@ export default function MyJumpsPage({user, handleLogout}){
             <HeaderComp user={user} handleLogout={handleLogout}/>
             <br />
             <div className="my-jumps">
-            <h3 className="page-message">Here are your jumps:</h3>
+            <br />
+            <h3 className="page-message">My Jumps</h3>
+            <h4>The jumps I've joined or organized.</h4>
+            <br />
             <JumpFeed 
                 user={user}
                 feedUser={profileUser} 

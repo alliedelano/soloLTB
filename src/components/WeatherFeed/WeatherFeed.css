@@ -1,0 +1,4 @@
+div.ui.stackable.cards {
+    display: flex;
+    justify-content: center;
+}

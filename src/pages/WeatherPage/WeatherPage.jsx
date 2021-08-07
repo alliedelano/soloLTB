@@ -34,6 +34,7 @@ export default function WeatherPage({user, handleLogout}){
             <HeaderComp user={user} handleLogout={handleLogout}/>
             <br />
             <div className="weatherFeed">
+                <br />
                 <h2 className="dzTitle">{dropzone.name} Weather</h2>
                 <br />
             {(loading) ?   <p1>Loading...</p1> :

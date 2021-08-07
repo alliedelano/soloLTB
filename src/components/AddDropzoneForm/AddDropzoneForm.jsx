@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
-import { Button, Dropdown, Form, Grid, Header, Image, Segment } from 'semantic-ui-react';
+import { Button, Dropdown, Form, Grid, Header, Image, Segment, Icon } from 'semantic-ui-react';
 
 export default function AddDropzoneForm(props){
     const [state, setState] = useState({
@@ -26,12 +26,15 @@ export default function AddDropzoneForm(props){
 
     return (
         <>
-        <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+        <Grid textAlign='center'  verticalAlign='top'>
           <Grid.Column style={{ maxWidth: 450 }}>
-              <Header as='h2' color='teal' textAlign='center'>
-                 Add a Dropzone  
-              </Header>            
+                          
                 <Form autoComplete="off"  onSubmit={handleSubmit}>
+                <Segment stacked>
+                <Header as='h2' color="blue" textAlign='center'>
+                <Icon name="plane" />Add a Dropzone  
+                </Header>
+                </Segment>
                 <Segment stacked>               
                     <Form.Input
                       name="name"

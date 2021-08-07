@@ -49,16 +49,20 @@ export default function AddPermissionForm({user, handleAddPermission}){
 
     return(
         <>
-            <Grid.Column style={{ maxWidth: 450 }}>
-              <Header as='h2' color='teal' textAlign='center'>
-                <Icon name="plane" /> Add User Permission    
-              </Header>            
+            <Grid textAlign='center' verticalAlign='top'>
+            <Grid.Column style={{ maxWidth: 450 }}>            
                 <Form autoComplete="off"  onSubmit={handleSubmit}>
+                <Segment stacked>
+                <Header as='h2' color="blue" textAlign='center'>
+                <Icon name="user" />Add User Permissions  
+                </Header>
+                </Segment>
                 <Segment stacked>               
                     <select
                         value={allUsers.selectValue}
                         onChange={e => setSelectedUser(e.target.value)}
                     >
+                        <option value="" disabled selected>Select User</option>
                         {allUsers.map(u => (
                             <option
                             key={u._id}
@@ -71,6 +75,7 @@ export default function AddPermissionForm({user, handleAddPermission}){
                         value={permissionTypes.selectValue}
                         onChange={e => setSelectedPermission(e.target.value)}
                     >
+                        <option value="" disabled selected>Select Permission</option>
                         {permissionTypes.map(p => (
                             <option
                                 key={p.key}
@@ -88,6 +93,7 @@ export default function AddPermissionForm({user, handleAddPermission}){
                   </Segment>
                 </Form>
             </Grid.Column>
+            </Grid>
         </>
     )
 }

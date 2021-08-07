@@ -1,9 +1,10 @@
 .page-header {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-content: center;
     margin: 0px 0px 0px 0px;
+    padding: 10px 10px 10px 10px;
     height: 8vh;
     background-color: white;
 }
@@ -13,7 +14,7 @@
 }
 
 .header-avatar {
-    margin: 2vh auto auto auto;
+    margin: 1vh auto auto auto;
 }
 
 .logout {

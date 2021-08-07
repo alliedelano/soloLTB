@@ -4,9 +4,12 @@ import dropzoneApi from '../../utils/dropzoneApi'
 import AddPermissionForm from '../../components/AddPermissionForm/AddPermissionForm'
 import * as permissionApi from '../../utils/permissionApi'
 import userService from '../../utils/userService'
-import MenuBar from '../../components/MenuBar/MenuBar'
+import './AdminPage.css'
+
 import {useHistory} from 'react-router-dom'
 import Footer from '../../components/Footer/Footer'
+import HeaderComp from '../../components/Header/Header'
+import {Grid} from 'semantic-ui-react'
 
 
 
@@ -54,12 +57,22 @@ export default function AdminPage({user, handleLogout}){
         <>
         {loading ? <h1>Loading</h1> :
         <>
-            <MenuBar user={user}/>
-            <h1>Admin Page</h1>
-            <AddDropzoneForm handleAddDropzone={handleAddDropzone} />
-            <AddPermissionForm user={user} handleAddPermission={handleAddPermission}/> 
-            <Footer user={user} handleLogout={handleLogout} />
-            </> }
+        
+            <HeaderComp user={user} handleLogout={handleLogout}/>
+            <div className="admin-page">
+                <h1 className="admin-header">Admin Portal</h1>
+            
+                <AddDropzoneForm handleAddDropzone={handleAddDropzone} />
+                <br />
+                <br />
+                <br />
+                <AddPermissionForm user={user} handleAddPermission={handleAddPermission}/> 
+            
+    
+            </div>
+            <Footer user={user}  />
+            </> 
+            }
         </>
         
     )

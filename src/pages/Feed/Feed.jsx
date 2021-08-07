@@ -60,7 +60,7 @@ export default function Feed({user, handleLogout}){
             <HeaderComp user={user} handleLogout={handleLogout}/>
             <br />
             <div className="feed">
-                <br />
+               <br />
             <h3 className="page-message">Here's the scoop at your DZ!</h3>
             <br />
             <JumpFeed user={user} feedUser={user} jumps={jumps} loading={loading} addJumper={addJumper} removeJumper={removeJumper} deleteJump={deleteJump}/>

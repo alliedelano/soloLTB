@@ -1,0 +1,22 @@
+.profile-page {
+    background-image: url("../../images/goldenHour.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 900px;
+    background-position: center;
+}
+
+.profile-pic {
+    box-shadow: 5px 5px 10px;
+    
+}
+
+.profile-text {
+    color: white;
+}
+
+.profile-bio {
+    padding: 10px;
+}
+

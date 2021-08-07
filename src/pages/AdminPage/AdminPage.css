@@ -1,0 +1,17 @@
+.admin-page {
+    background-image: url("../../images/IMG_4788.PNG");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 900px;
+    background-position: center;
+    
+  }
+
+.admin-header {
+    color: white;
+    
+}
+.form-header {
+    color: white;
+}

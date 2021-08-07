@@ -5,10 +5,12 @@
     background-size: cover;
     min-height: 900px;
     background-position: center;
+    justify-content: center;
 }
 
 .dzTitle {
     color: white;
     font-size: 30px;
-
 }
+
+

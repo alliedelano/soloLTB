@@ -91,7 +91,7 @@ export default function LoginPage(props){
             </Segment>
           </Form>
           <Message>
-            <h4>New to us? <Link to="/signup">Sign Up</Link></h4>
+            <p>New to us? <Link to="/signup">Sign Up</Link></p>
           </Message>
           {error ? <ErrorMessage error={error} /> : null}
         </Grid.Column>

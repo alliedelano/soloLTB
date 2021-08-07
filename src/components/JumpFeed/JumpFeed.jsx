@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import JumpCard from '../../components/JumpCard/JumpCard'
 import { Card, Loader, Dimmer, Segment, Image } from 'semantic-ui-react';
-
+import './JumpFeed.css'
 
 export default function JumpFeed({user, jumps, loading, addJumper, removeJumper, isProfile, deleteJump, feedUser}){
     
@@ -16,6 +16,7 @@ export default function JumpFeed({user, jumps, loading, addJumper, removeJumper,
 
     return(
         <>
+        <div className="jump-feed">
     <Card.Group stackable>
       {loading ? (
         <Segment>
@@ -41,6 +42,7 @@ export default function JumpFeed({user, jumps, loading, addJumper, removeJumper,
           );
       })}
     </Card.Group>
+    </div>
         </>
     )
 }
