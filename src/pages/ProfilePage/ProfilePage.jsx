@@ -11,6 +11,7 @@ import * as jumperApi from '../../utils/jumperApi'
 import HeaderComp from '../../components/Header/Header'
 import './ProfilePage.css'
 import * as permissionApi from '../../utils/permissionApi'
+import { findAllByDisplayValue } from '@testing-library/react'
 
 
 export default function ProfilePage({user, handleLogout}){
@@ -23,6 +24,7 @@ export default function ProfilePage({user, handleLogout}){
     const [allJumps, setAllJumps] = useState([])
     const [orgJumps, setOrgJumps] = useState([]);
     const [joinedJumps, setJoinedJumps] = useState([]);
+    const [myProfile, setMyProfile] = useState(false)
 
     
     async function getJumps(){
@@ -67,6 +69,7 @@ export default function ProfilePage({user, handleLogout}){
 
     async function getProfile() {
         try {
+            setMyProfile(false)
             const data = await userService.getProfile(username);
             setLoading(() => false);
             setProfileUser(() => data.user);
@@ -74,6 +77,9 @@ export default function ProfilePage({user, handleLogout}){
             setOrgJumps(() => data.orgJumps)
             setJoinedJumps(() => data.joinedJumps)
             await getPermissions()
+            if (data.user.username === user.username){
+                setMyProfile(true)
+            }
             setLoading(false)
         } catch (err) {
             console.log(err)
@@ -141,7 +147,7 @@ export default function ProfilePage({user, handleLogout}){
             <div className="profile-page">
             <br />
             <br />
-            <ProfileBio user={profileUser} dropzone={profileDz} admin={admin}/>
+            <ProfileBio feedUser={profileUser} dropzone={profileDz} admin={admin} myProfile={myProfile}/>
             <br />
             <Divider />
             <br />
