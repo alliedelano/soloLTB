@@ -2,7 +2,19 @@ const Jump = require('../models/jump');
 
 module.exports = {
     addJumper,
-    deleteJumper
+    deleteJumper,
+    addFriend
+}
+
+async function addFriend(req, res){
+    try {
+        const jump = await Jump.findById(req.params.id);
+        jump.jumpers.push({...req.body})
+        await jump.save()
+        res.status(201).json({data: 'added friend'})
+    } catch (err){
+        res.json({data: err})
+    }
 }
 
 async function addJumper(req, res){

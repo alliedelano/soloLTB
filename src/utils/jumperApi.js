@@ -24,3 +24,16 @@ export function removeJumper(jumperId){
 	  new Error('Error removing jumper');
 	})
 }
+
+export function addFriend(friend, jumpId){
+	return fetch(`${BASE_URL}jumps/${jumpId}/addFriend`, {
+        method: 'POST',
+		body: friend,
+        headers: {
+			'Authorization': 'Bearer ' + tokenService.getToken()
+		}
+	}).then(res => {
+		if(res.ok) return res.json()
+	  new Error('Error adding jumper');
+    })
+}
