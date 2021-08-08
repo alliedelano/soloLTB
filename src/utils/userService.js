@@ -72,6 +72,17 @@ function getFriends(dropzoneId){
   }).then(res => res.json())
 }
 
+function getOne(userId){
+  return fetch(BASE_URL + "find/" + userId, {
+    headers: {
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }
+  }).then(res => {
+    if(res.ok) return res.json();
+    throw new Error('could not find user to add as friend')
+  })
+}
+
 
 export default {
   signup, 
@@ -80,5 +91,6 @@ export default {
   getUser,
   getProfile,
   getAll,
-  getFriends
+  getFriends,
+  getOne
 };

@@ -17,20 +17,22 @@ export default function AddFriendForm({user, jump, handleAddFriend}){
         }
     }
 
-    const [selectedUser, setSelectedUser] = useState('')
+    const [selectedUser, setSelectedUser] = useState({})
     const history = useHistory()
 
-    function handleSubmit(e){
+    async function handleSubmit(e){
         e.preventDefault()
+        console.log(selectedUser)
+        const data = await userService.getOne(selectedUser)
         const formData = new FormData()
-        formData.append('username', selectedUser.username)
-        formData.append('userId', selectedUser._id)
-        formData.append('userAvatar', selectedUser.userAvatar)
+        formData.append('username', data.friend.username)
+        formData.append('userId', data.friend._id)
+        formData.append('userAvatar', data.friend.photoUrl)
         for (var pair of formData.entries()){
             console.log(pair[0] + ', ' + pair[1])
         }
         handleAddFriend(formData)
-        history.push(`/jumps/${jump._id}`)
+        
     }
 
     useEffect(() => {
@@ -57,7 +59,7 @@ export default function AddFriendForm({user, jump, handleAddFriend}){
                         {friends.map(u => (
                             <option
                             key={u._id}
-                            value={u}>
+                            value={u._id}>
                                 {u.firstName} {u.lastName} - {u.username}
                             </option>
                         ))}

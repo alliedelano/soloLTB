@@ -9,6 +9,7 @@ router.post('/login', usersCtrl.login);
 router.get('/friends/:dropzoneId', usersCtrl.friends)
 router.get('/:username', usersCtrl.profile)
 router.get('/', usersCtrl.index)
+router.get('/find/:userId', usersCtrl.findOne)
 
 
 /*---------- Protected Routes ----------*/

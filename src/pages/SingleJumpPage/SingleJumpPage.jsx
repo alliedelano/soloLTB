@@ -69,8 +69,10 @@ export default function SingleJumpPage({user, handleLogout}){
     
 
     async function handleAddFriend(friend){
+        
         try {
-            const data = await jumperApi.addFriend(friend, jump._id)
+            const data = await jumperApi.addFriend(friend, jump._id);
+            getJump()
         } catch (err) {
             console.log(err, ' error adding friend')
         }
@@ -102,7 +104,7 @@ export default function SingleJumpPage({user, handleLogout}){
             ) : 
             <><JumpDetails jump={jump} user={user} loading={loading} addJumper={addJumper} removeJumper={removeJumper} deleteJump={deleteJump}/>
             <br />
-            <AddFriendForm user={user} loading={loading} jump={jump}/></>
+            <AddFriendForm user={user} loading={loading} jump={jump} handleAddFriend={handleAddFriend}/></>
         }
             </div>
             <Footer user={user}/>

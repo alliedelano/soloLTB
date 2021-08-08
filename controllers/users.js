@@ -14,7 +14,17 @@ module.exports = {
   profile,
   index,
   friends,
+  findOne
 };
+
+async function findOne(req, res){
+  try {
+    const friend = await User.findOne({_id: req.params.userId})
+    res.status(200).json({friend: friend})
+  } catch (err){
+    console.log('error getting user')
+  }
+}
 
 async function friends(req, res) {
   try {
@@ -102,6 +112,7 @@ async function profile(req, res){
     res.json({err})
   }
 }
+
 
 /*----- Helper Functions -----*/
 

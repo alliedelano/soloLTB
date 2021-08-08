@@ -43,7 +43,10 @@ export default function AdminPage({user, handleLogout}){
         const data = dropzoneApi.create(dropzone);
     }
 
-    
+    function handleAddPermission(permission){
+        console.log(permission)
+        const data = permissionApi.create(permission)
+    }
 
     useEffect(() => {
         getPermissions()
