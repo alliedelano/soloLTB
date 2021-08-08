@@ -11,6 +11,7 @@ import MenuPage from '../MenuPage/MenuPage'
 import AddJumpPage from '../AddJumpPage/AddJumpPage'
 import WeatherPage from '../WeatherPage/WeatherPage'
 import MyJumpsPage from '../MyJumpsPage/MyJumpsPage'
+import SingleJumpPage from '../SingleJumpPage/SingleJumpPage'
 
 
 
@@ -62,9 +63,13 @@ function App() {
                 <Route exact path="/admin">
                   <AdminPage user={user}/>
                 </Route>
+                <Route exact path="/jumps/:jumpId">
+                  <SingleJumpPage user={user} handleLogout={handleLogout}/>
+                </Route>
                 <Route exact path="/:username">
                   <ProfilePage user={user} handleLogout={handleLogout} />
                 </Route>
+                
             </Switch>
             </>
             :

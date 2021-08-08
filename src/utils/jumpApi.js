@@ -11,6 +11,8 @@ export function create(jump){
     }).then(res => res.json());
 }
 
+
+
 export function getAll(){
     return fetch(BASE_URL, {
         headers: {
@@ -19,7 +21,7 @@ export function getAll(){
     }).then(res => res.json())
 }
 
-export function findJumpers(jumpId){
+export function getJump(jumpId){
     return fetch(`${BASE_URL}${jumpId}`, {
         headers: {
 			'Authorization': 'Bearer ' + tokenService.getToken()

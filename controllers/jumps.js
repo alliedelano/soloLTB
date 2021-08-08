@@ -7,11 +7,13 @@ module.exports = {
     deleteJump
 }
 
+
 async function findJumpers(req, res){
     try {
-        const jump = await Jump.findById({jumpId})
+        const jump = await Jump.findById(req.params.jumpId)
         const jumpers = jump.jumpers
-        res.status(200).json({ jumpers: jumpers })
+        console.log(jump)
+        res.status(200).json({ jump: jump, jumpers: jumpers })
     } catch (err) {
         console.log("error getting jumpers for this jump")
     }

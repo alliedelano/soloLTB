@@ -30,6 +30,7 @@ export default function MyJumpsPage({user, handleLogout}){
             console.log(err, " this is the error")
         }
     }
+
     async function addJumper(jumpId){
         try {
             const data = await jumperApi.addJumper(jumpId);
@@ -72,16 +73,6 @@ export default function MyJumpsPage({user, handleLogout}){
         }
     }
     
-    
-    async function getJumps(){
-        try {
-            const data = await jumpApi.getAll();
-            setJumps([...data.jumps])
-            setLoading(false)
-        } catch (err){
-            console.log(err, " this is the error")
-        }
-    }
 
     useEffect(() => {
         getProfile();

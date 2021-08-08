@@ -1,0 +1,8 @@
+.detail-container {
+    display: flex;
+    justify-content: center;
+}
+
+h2 {
+    color: white;
+}
