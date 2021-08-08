@@ -12,7 +12,7 @@ export default function JumpCard({jump, addJumper, removeJumper, user, deleteJum
     const onJump = jump.jumpers.findIndex(jumper => jumper.username === user.username)
 
     const clickHandler = onJump > -1 ? () => removeJumper(jump.jumpers[onJump]._id): () => addJumper(jump._id)
-    const text = onJump > -1 ? 'remove me' : 'add me'
+    const text = onJump > -1 ? 'Remove Me' : 'Add Me'
     const color = onJump > -1 ? 'red' : 'green'
    
 
