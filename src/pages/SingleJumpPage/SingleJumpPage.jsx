@@ -7,7 +7,7 @@ import Footer from '../../components/Footer/Footer'
 import { useParams, useHistory } from 'react-router-dom'
 import './SingleJumpPage.css'
 import { Segment, Dimmer, Loader, Image } from 'semantic-ui-react';
-
+import AddFriendForm from '../../components/AddFriendForm/AddFriendForm'
 
 export default function SingleJumpPage({user, handleLogout}){
     
@@ -57,7 +57,18 @@ export default function SingleJumpPage({user, handleLogout}){
         }
     }
 
-    async function findFriends()
+    async function findFriends(){
+        console.log('no friends yet')
+        // find all the users
+        // for each, define const of onThisJump 
+        // if onThisJump > -1 => they're on the jump already : push them to non-jumpers collection 
+        // set nonJumpers to non-jumpers array
+        // 
+    }
+
+
+
+
 
     useEffect(() => {
         getJump()
@@ -79,7 +90,9 @@ export default function SingleJumpPage({user, handleLogout}){
                     <Image src="https://react.semantic-ui.com/images/wireframe/short-paragraph.png" />
                 </Segment>
             ) : 
-            <JumpDetails jump={jump} user={user} loading={loading} addJumper={addJumper} removeJumper={removeJumper} deleteJump={deleteJump}/>
+            <><JumpDetails jump={jump} user={user} loading={loading} addJumper={addJumper} removeJumper={removeJumper} deleteJump={deleteJump}/>
+            <br />
+            <AddFriendForm user={user} loading={loading}/></>
         }
             </div>
             <Footer user={user}/>

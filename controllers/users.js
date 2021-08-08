@@ -12,8 +12,18 @@ module.exports = {
   signup,
   login,
   profile,
-  index
+  index,
+  friends,
 };
+
+async function friends(req, res) {
+  try {
+    const friends = await User.find({homeDz: req.params.dropzoneId}).sort('firstName');
+    res.status(200).json({friends: friends})
+  } catch (err) {
+    console.log('error getting friends')
+  }
+}
 
 async function index(req, res) {
   try {

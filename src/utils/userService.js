@@ -64,6 +64,14 @@ function getAll(){
   }).then(res => res.json())
 }
 
+function getFriends(dropzoneId){
+  return fetch(BASE_URL + 'friends/' + dropzoneId, {
+    headers: {
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }
+  }).then(res => res.json())
+}
+
 
 export default {
   signup, 
@@ -71,5 +79,6 @@ export default {
   login,
   getUser,
   getProfile,
-  getAll
+  getAll,
+  getFriends
 };
