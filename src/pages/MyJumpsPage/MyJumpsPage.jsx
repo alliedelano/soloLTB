@@ -19,6 +19,7 @@ export default function MyJumpsPage({user, handleLogout}){
     const [allJumps, setAllJumps] = useState([])
     const [orgJumps, setOrgJumps] = useState([]);
     const [joinedJumps, setJoinedJumps] = useState([]);
+    const [jumpsExist, setJumpsExist] = useState(true);
 
     
     async function getJumps(){
@@ -66,6 +67,9 @@ export default function MyJumpsPage({user, handleLogout}){
             setProfileDz(() => data.dropzone)
             setOrgJumps(() => data.orgJumps)
             setJoinedJumps(() => data.joinedJumps)
+            if (!data.joinedJumps.length){
+                setJumpsExist(false)
+            }
             setLoading(false)
         } catch (err) {
             console.log(err)
@@ -89,7 +93,6 @@ export default function MyJumpsPage({user, handleLogout}){
             <div className="my-jumps">
             <br />
             <h3 className="page-message">My Jumps</h3>
-            <h4>The jumps I've joined or organized.</h4>
             <br />
             <JumpFeed 
                 user={user}
@@ -99,6 +102,8 @@ export default function MyJumpsPage({user, handleLogout}){
                 addJumper={addJumper} 
                 removeJumper={removeJumper}
                 deleteJump={deleteJump}
+                isMyJumps={true}
+                jumpsExist={jumpsExist}
                 />
             </div>
             <Footer user={user}/>

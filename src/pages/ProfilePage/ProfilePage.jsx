@@ -25,6 +25,7 @@ export default function ProfilePage({user, handleLogout}){
     const [orgJumps, setOrgJumps] = useState([]);
     const [joinedJumps, setJoinedJumps] = useState([]);
     const [myProfile, setMyProfile] = useState(false)
+    const [jumpsExist, setJumpsExist] = useState(true);
 
     
     async function getJumps(){
@@ -79,6 +80,9 @@ export default function ProfilePage({user, handleLogout}){
             await getPermissions()
             if (data.user.username === user.username){
                 setMyProfile(true)
+            }
+            if (!data.joinedJumps.length){
+                setJumpsExist(false)
             }
             setLoading(false)
         } catch (err) {
@@ -155,11 +159,13 @@ export default function ProfilePage({user, handleLogout}){
             <JumpFeed 
                 user={user}
                 feedUser={profileUser}  
-                jumps={joinedJumps} 
+                jumps={joinedJumps}
+                isProfile={true} 
                 loading={loading} 
                 addJumper={addJumper} 
                 removeJumper={removeJumper}
                 deleteJump={deleteJump}
+                jumpsExist={jumpsExist}
                 />
             </div>
             <Footer user={user} />

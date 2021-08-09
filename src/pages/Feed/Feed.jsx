@@ -13,11 +13,15 @@ export default function Feed({user, handleLogout}){
     
     const [jumps, setJumps] = useState([])
     const [loading, setLoading] = useState(true);
+    const [jumpsExist, setJumpsExist] = useState(true);
 
     async function getJumps(){
         try {
             const data = await jumpApi.getAll();
             setJumps([...data.jumps])
+            if (!data.jumps.length){
+                setJumpsExist(false)
+            }
             setLoading(false)
         } catch (err){
             console.log(err, " this is the error")
@@ -63,7 +67,7 @@ export default function Feed({user, handleLogout}){
                <br />
             <h3 className="page-message">Here's the scoop at your DZ!</h3>
             <br />
-            <JumpFeed user={user} feedUser={user} jumps={jumps} loading={loading} addJumper={addJumper} removeJumper={removeJumper} deleteJump={deleteJump}/>
+            <JumpFeed jumpsExist={jumpsExist} isFeed={true} user={user} feedUser={user} jumps={jumps} loading={loading} addJumper={addJumper} removeJumper={removeJumper} deleteJump={deleteJump}/>
             </div>
             <Footer user={user}/>
         </>
