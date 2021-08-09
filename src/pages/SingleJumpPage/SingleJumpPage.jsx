@@ -34,6 +34,7 @@ export default function SingleJumpPage({user, handleLogout}){
         try {
             const data = await jumperApi.addJumper(jumpId);
             getJump();
+            history.push(`/jumps/${jump._id}`)
         } catch (err) {
             console.log(err);
         }
@@ -43,6 +44,7 @@ export default function SingleJumpPage({user, handleLogout}){
         try {
             const data = await jumperApi.removeJumper(jumperId);
             getJump()
+            history.push(`/jumps/${jump._id}`)
         } catch (err) {
             console.log(err);
         }
@@ -56,20 +58,10 @@ export default function SingleJumpPage({user, handleLogout}){
             console.log(err)
         }
     }
-
-    // async function findFriends(){
-    //     console.log('no friends yet')
-    //     // find all the users
-    //     // for each, define const of onThisJump 
-    //     // if onThisJump > -1 => they're on the jump already : push them to non-jumpers collection 
-    //     // set nonJumpers to non-jumpers array
-    //     // 
-    // }
-
     
 
     async function handleAddFriend(friend){
-        
+        setLoading(true)
         try {
             const data = await jumperApi.addFriend(friend, jump._id);
             getJump()
@@ -77,9 +69,6 @@ export default function SingleJumpPage({user, handleLogout}){
             console.log(err, ' error adding friend')
         }
     }
-
-
-
 
 
     useEffect(() => {

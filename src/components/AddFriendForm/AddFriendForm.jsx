@@ -3,15 +3,24 @@ import {useHistory} from 'react-router-dom'
 import { Button, Dropdown, Form, Grid, Header, Image, Segment, Icon, Dimmer, Loader, Select } from 'semantic-ui-react';
 import userService from '../../utils/userService'
 
-export default function AddFriendForm({user, jump, handleAddFriend}){
+export default function AddFriendForm({user, jump, handleAddFriend, loading}){
 
     const [friends, setFriends] = useState([]);
+    const [nonJumpers, setNonJumpers] = useState([])
     
     async function getFriends(){
         try {
             const data = await userService.getFriends(user.homeDz)
             setFriends(data.friends);
             setSelectedUser(data.friends[0]._id)
+            data.friends.map(u => {
+                const onJump = jump.jumpers.findIndex(jumper => jumper.username === u.username)
+                if (onJump === -1) {
+                    nonJumpers.push(u)
+                    setNonJumpers([...nonJumpers])
+                }
+            })
+            
         } catch (err) {
             console.log(err, ' error loading friends')
         }
@@ -35,12 +44,27 @@ export default function AddFriendForm({user, jump, handleAddFriend}){
         
     }
 
+    
+
     useEffect(() => {
         getFriends();
     }, [])
 
+    useEffect(() => {
+        getFriends()
+    }, [jump])
+
+
     return(
-        <>
+        <> 
+        {loading ? (
+            <Segment>
+                <Dimmer active inverted>
+                    <Loader size="small">Loading</Loader>
+                </Dimmer>
+                <Image src="https://react.semantic-ui.com/images/wireframe/short-paragraph.png" />
+            </Segment>
+        ) : 
             <Grid textAlign='center' verticalAlign='top'>
             <Grid.Column style={{ maxWidth: 450 }}>            
                 <Form autoComplete="off"  onSubmit={handleSubmit}>
@@ -56,7 +80,7 @@ export default function AddFriendForm({user, jump, handleAddFriend}){
                         onChange={e => setSelectedUser(e.target.value)}
                     >
                         <option value="" disabled selected>Select User</option>
-                        {friends.map(u => (
+                        {nonJumpers.map(u => (
                             <option
                             key={u._id}
                             value={u._id}>
@@ -76,6 +100,7 @@ export default function AddFriendForm({user, jump, handleAddFriend}){
                 </Form>
             </Grid.Column>
             </Grid>
+            }
         </>
 
 

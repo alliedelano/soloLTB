@@ -49,12 +49,13 @@ export default function JumpDetails({jump, addJumper, removeJumper, user, delete
                         
                         {jump.jumpers.map((jumper) => {
                         return(
-                            
-                            <tr>
+                            <tbody>
+                            <tr key={jumper._id}>
                                 <Link to={`/${jumper.username}`}><td><Image src={`${jumper.userAvatar}`} avatar size="big" /></td>
                                 <td>{jumper.username}</td></Link>
                                 <td>{(user.username === jump.username) ? <><Icon name="cancel" size="large" onClick={() => removeJumper(jumper._id)} /> <p>Remove</p> </>: ""}</td>
                             </tr>
+                            </tbody>
                         )
                     })}
                         </table>
