@@ -14,6 +14,7 @@ export default function SingleJumpPage({user, handleLogout}){
     const [jump, setJump] = useState({})
     const [loading, setLoading] = useState(true)
     const [users, setUsers] = useState([])
+    const [full, setFull] = useState(false)
 
     const { jumpId } = useParams();
     const history = useHistory()
@@ -24,6 +25,7 @@ export default function SingleJumpPage({user, handleLogout}){
             const data = await jumpApi.getJump(jumpId);
             console.log(data.jump)
             await setJump(data.jump)
+            setFull(jump.jumpers.length === parseInt(jump.slots))
             setLoading(false)
         } catch (err) {
             console.log(err, ' error from getting jump - jump page')
@@ -93,7 +95,10 @@ export default function SingleJumpPage({user, handleLogout}){
             ) : 
             <><JumpDetails jump={jump} user={user} loading={loading} addJumper={addJumper} removeJumper={removeJumper} deleteJump={deleteJump}/>
             <br />
-            <AddFriendForm user={user} loading={loading} jump={jump} handleAddFriend={handleAddFriend}/></>
+             {full ? '' : 
+            <AddFriendForm user={user} loading={loading} jump={jump} handleAddFriend={handleAddFriend}/>
+                }
+            </>
         }
             </div>
             <Footer user={user}/>

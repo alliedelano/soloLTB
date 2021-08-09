@@ -6,14 +6,22 @@ import './JumpCard.css'
 
 export default function JumpCard({jump, addJumper, removeJumper, user, deleteJump, today, feedUser}){
 
-    //const [jumpers, setJumpers] = useState(jump.jumpers)
+    { (jump.jumpers.length === parseInt(jump.slots) ? <h5>Jump Full!</h5>:<h5>Looking for more jumpers! ({jump.jumpers.length} / {parseInt(jump.slots)} slots)</h5>)}
+
     const [loading, setLoading] = useState(false)
 
     const onJump = jump.jumpers.findIndex(jumper => jumper.username === user.username)
+    const full = (jump.jumpers.length === parseInt(jump.slots))
+    
+    
+
+
+    // { (jump.jumpers.length === parseInt(jump.slots) ? <h5>Jump Full!</h5>:<h5>Looking for more jumpers! ({jump.jumpers.length} / {parseInt(jump.slots)} slots)</h5>)}
+
 
     const clickHandler = onJump > -1 ? () => removeJumper(jump.jumpers[onJump]._id): () => addJumper(jump._id)
     const text = onJump > -1 ? 'Remove Me' : 'Add Me'
-    const color = onJump > -1 ? 'red' : 'green'
+    const buttonColor = onJump > -1 ? 'red' : 'green'
    
 
     function handleSubmit(e){
@@ -26,7 +34,7 @@ export default function JumpCard({jump, addJumper, removeJumper, user, deleteJum
     return(
         <>
 
-            <Card key={jump._id} color='blue'>
+            <Card key={jump._id} color='blue' style={{backgroundColor: full ? '#FFF1F1' : 'white'}}>
             {loading ? (
                 <Segment>
                     <Dimmer active inverted>
@@ -55,7 +63,7 @@ export default function JumpCard({jump, addJumper, removeJumper, user, deleteJum
                     
                         </Grid.Row>
                         <Grid.Row>
-                        { (jump.jumpers.length === parseInt(jump.slots) ? <h5>Jump Full!</h5>:<h5>Looking for more jumpers! ({jump.jumpers.length} / {parseInt(jump.slots)} slots)</h5>)}
+                        { (full ? <h5 className="fullText">Jump Full!</h5>:<h5>Looking for more jumpers! ({jump.jumpers.length} / {parseInt(jump.slots)} slots)</h5>)}
                         </Grid.Row>  
                         <Grid.Row>
                             <Link to={`/jumps/${jump._id}`}><Card.Description>See more details</Card.Description></Link>
@@ -65,8 +73,10 @@ export default function JumpCard({jump, addJumper, removeJumper, user, deleteJum
                 </Card.Content>
                 
                 <Card.Content extra>
-                    <Button color={color} onClick={clickHandler}>{text}</Button>
-                    <br />
+                    {full ? '': 
+                    <><Button color={buttonColor} onClick={clickHandler}>{text}</Button>
+                    <br /></>
+                }
                 </Card.Content> 
             </Card>
            

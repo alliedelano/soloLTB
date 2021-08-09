@@ -3,13 +3,14 @@ import { Card, Icon, Image, Segment, Dimmer, Loader, Button, Grid} from "semanti
 import {Link} from 'react-router-dom'
 import './JumpDetails.css'
 
-export default function JumpDetails({jump, addJumper, removeJumper, user, deleteJump, loading, users}){
+export default function JumpDetails({jump, addJumper, removeJumper, user, deleteJump, loading, full, users}){
     
     const onJump = jump.jumpers.findIndex(jumper => jumper.username === user.username)
 
     const clickHandler = onJump > -1 ? () => removeJumper(jump.jumpers[onJump]._id): () => addJumper(jump._id)
     const text = onJump > -1 ? 'Remove Me' : 'Add Me'
     const color = onJump > -1 ? 'red' : 'green'
+    
 
     function handleSubmit(e){
         e.preventDefault()

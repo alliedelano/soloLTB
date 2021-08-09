@@ -65,6 +65,7 @@ export default function AddFriendForm({user, jump, handleAddFriend, loading}){
                 <Image src="https://react.semantic-ui.com/images/wireframe/short-paragraph.png" />
             </Segment>
         ) : 
+         
             <Grid textAlign='center' verticalAlign='top'>
             <Grid.Column style={{ maxWidth: 450 }}>            
                 <Form autoComplete="off"  onSubmit={handleSubmit}>
@@ -100,6 +101,7 @@ export default function AddFriendForm({user, jump, handleAddFriend, loading}){
                 </Form>
             </Grid.Column>
             </Grid>
+       
             }
         </>
 
