@@ -1,4 +1,4 @@
-(Screenshot of homepage)
+![dz feed](src/images/dzfeed.png)
 
 # Solo, Looking to Build 
 This is a load organizing app built for skydivers. Once logged in, jumpers can organize new jumps, join jumps, and check the weather.
