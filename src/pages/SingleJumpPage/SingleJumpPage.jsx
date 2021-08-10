@@ -20,9 +20,7 @@ export default function SingleJumpPage({user, handleLogout}){
     
     async function getJump(){
         try {
-            console.log(jumpId)
             const data = await jumpApi.getJump(jumpId);
-            console.log(data.jump)
             await setJump(data.jump)
             await setFull(data.jump.jumpers.length === parseInt(data.jump.slots))
             setLoading(false)
