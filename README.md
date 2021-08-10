@@ -1,6 +1,6 @@
 ![dz feed](src/images/dzfeed.png)
 
-# Solo, Looking to Build 
+# Solo: Looking to Build 
 SoloLTB is a load organizing app built for skydivers using the MERN stack. Once signed up and logged in, jumpers can check out upcoming jumps at their home dropzone, join jumps, organize new jumps, check the weather, and look at the profiles of other jumpers. The app also includes an admin portal for easily adding new dropzones and user permissions.
 
 
@@ -20,7 +20,7 @@ SoloLTB is a load organizing app built for skydivers using the MERN stack. Once 
 * MongoDB Atlas
 
 ## Getting Started
-Check out the app here: [Solo, Looking to Build](https://sololtb.herokuapp.com/)
+Check out the app here: [Solo: Looking to Build](https://sololtb.herokuapp.com/)
 
 I used a Trello board to help organize the development of this app, from planning through deployment: [Trello Board - Solo LTB](https://trello.com/b/IjHBTxH9/project-4-solo-ltb)
 
