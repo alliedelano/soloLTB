@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
-import { Button, Dropdown, Form, Grid, Header, Image, Segment, Icon } from 'semantic-ui-react';
+import { Button, Form, Grid, Header, Segment, Icon } from 'semantic-ui-react';
 
 export default function AddDropzoneForm(props){
     const [state, setState] = useState({
@@ -20,22 +19,18 @@ export default function AddDropzoneForm(props){
     function handleSubmit(e){
         e.preventDefault();
         const dropzone = state
-        console.log(state, "<-- form data logged")
         props.handleAddDropzone(dropzone)
     }
 
     return (
         <>
         <Grid textAlign='center'  verticalAlign='top'>
-          <Grid.Column style={{ maxWidth: 450 }}>
-                          
-                <Form autoComplete="off"  onSubmit={handleSubmit}>
+          <Grid.Column style={{ maxWidth: 450 }}>           
+            <Form autoComplete="off"  onSubmit={handleSubmit}>
                 <Segment stacked>
-                <Header as='h2' color="blue" textAlign='center'>
-                <Icon name="plane" />Add a Dropzone  
-                </Header>
-                </Segment>
-                <Segment stacked>               
+                    <Header as='h3' color="blue" textAlign='center'>
+                      <Icon name="plane" />Add a Dropzone  
+                    </Header>               
                     <Form.Input
                       name="name"
                       placeholder="name of dropzone"
@@ -67,18 +62,14 @@ export default function AddDropzoneForm(props){
                     <Button
                       type="submit"
                       className="btn"
-                    >
-                    Add Dropzone
-                  </Button>
-                  </Segment>
-                </Form>
-               
+                      color="blue"
+                      >
+                      Add Dropzone
+                    </Button>
+                </Segment>
+              </Form>
             </Grid.Column>
           </Grid>
         </>
     )
-
-
-
-
 }

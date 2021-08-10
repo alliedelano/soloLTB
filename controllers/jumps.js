@@ -12,10 +12,10 @@ async function findJumpers(req, res){
     try {
         const jump = await Jump.findById(req.params.jumpId)
         const jumpers = jump.jumpers
-        console.log(jump)
         res.status(200).json({ jump: jump, jumpers: jumpers })
     } catch (err) {
         console.log("error getting jumpers for this jump")
+        res.json({err})
     }
 }
 

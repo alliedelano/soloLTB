@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {useHistory} from 'react-router-dom'
-import { Button, Dropdown, Form, Grid, Header, Image, Segment, Icon, Dimmer, Loader, Select } from 'semantic-ui-react';
+import { Button, Form, Grid, Header, Segment, Icon } from 'semantic-ui-react';
 import userService from '../../utils/userService'
 
 
@@ -11,7 +11,6 @@ export default function AddPermissionForm({user, handleAddPermission}){
         {key: 2, label: 'dz organizer', value: 'dz organizer'}
     ])
 
-    const [permissions, setPermissions] = useState({})
     const [allUsers, setAllUsers] = useState([]);
     
     async function getUsers(){
@@ -50,49 +49,49 @@ export default function AddPermissionForm({user, handleAddPermission}){
     return(
         <>
             <Grid textAlign='center' verticalAlign='top'>
-            <Grid.Column style={{ maxWidth: 450 }}>            
-                <Form autoComplete="off"  onSubmit={handleSubmit}>
-                <Segment stacked>
-                <Header as='h2' color="blue" textAlign='center'>
-                <Icon name="user" />Add User Permissions  
-                </Header>
-                </Segment>
-                <Segment stacked>               
-                    <select
-                        value={allUsers.selectValue}
-                        onChange={e => setSelectedUser(e.target.value)}
-                    >
-                        <option value="" disabled selected>Select User</option>
-                        {allUsers.map(u => (
-                            <option
-                            key={u._id}
-                            value={u._id}>
-                                {u.firstName} {u.lastName}
-                            </option>
-                        ))}
-                    </select>
-                    <select
-                        value={permissionTypes.selectValue}
-                        onChange={e => setSelectedPermission(e.target.value)}
-                    >
-                        <option value="" disabled selected>Select Permission</option>
-                        {permissionTypes.map(p => (
-                            <option
-                                key={p.key}
-                                value={p.value}>
-                               {p.label}
-                            </option>
-                        ))}
-                    </select>
-                    <Button
-                      type="submit"
-                      className="btn"
-                    >
-                    Add Permission
-                  </Button>
-                  </Segment>
-                </Form>
-            </Grid.Column>
+                <Grid.Column style={{ maxWidth: 450 }}>            
+                    <Form autoComplete="off"  onSubmit={handleSubmit}>
+                        <Segment stacked>
+                            <Header as='h3' color="blue" textAlign='center'>
+                                <Icon name="user" />Add User Permissions  
+                            </Header>               
+                            <select
+                                value={allUsers.selectValue}
+                                onChange={e => setSelectedUser(e.target.value)}
+                            >
+                                <option value="" disabled selected>Select User</option>
+                                {allUsers.map(u => (
+                                    <option
+                                    key={u._id}
+                                    value={u._id}>
+                                        {u.firstName} {u.lastName}
+                                    </option>
+                                ))}
+                            </select>
+                            <select
+                                value={permissionTypes.selectValue}
+                                onChange={e => setSelectedPermission(e.target.value)}
+                            >
+                                <option value="" disabled selected>Select Permission</option>
+                                {permissionTypes.map(p => (
+                                    <option
+                                        key={p.key}
+                                        value={p.value}>
+                                    {p.label}
+                                    </option>
+                                ))}
+                            </select>
+                            <br />
+                            <Button
+                            type="submit"
+                            className="btn"
+                            color="blue"
+                            >
+                            Add Permission
+                            </Button>
+                        </Segment>
+                    </Form>
+                </Grid.Column>
             </Grid>
         </>
     )

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
-import { Button, Dropdown, Form, Grid, Header, Image, Segment, Icon } from 'semantic-ui-react';
+import { Button, Form, Grid, Header, Segment, Icon } from 'semantic-ui-react';
 import { useHistory } from 'react-router-dom';
 import * as jumpApi from '../../utils/jumpApi'
 
@@ -12,8 +11,6 @@ export default function AddJumpForm({user, dropzone}){
     })
 
     const [date, setDate] = useState('')
-
-    //const [disciplines, setDisciplines] = useState(["oogabooga"])
 
     const history = useHistory()
     
@@ -36,9 +33,6 @@ export default function AddJumpForm({user, dropzone}){
         for (let key in state){
             formData.append(key, state[key])
         }
-        for (var pair of formData.entries()) {
-            console.log(pair[0]+ ', ' + pair[1])
-        }
         try {
             await jumpApi.create(formData);
             history.push('/myjumps')
@@ -52,7 +46,7 @@ export default function AddJumpForm({user, dropzone}){
 
 
     return(
-        <>  
+      <>  
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='top'>
           <Grid.Column style={{ maxWidth: 450 }}>
                 <br />
@@ -75,10 +69,8 @@ export default function AddJumpForm({user, dropzone}){
                        value={date}
                        onChange={e => setDate(e.target.value)}
                     />
-                    
                     <Form.Input placeholder="number of slots" type="number" name="slots" value={state.slots} onChange={handleChange}/>
                     <Form.TextArea placeholder='Describe the jump' name='description' value={state.description} onChange={handleChange}/>
-                    
                     <Button
                       color="blue"
                       fluid
@@ -91,9 +83,8 @@ export default function AddJumpForm({user, dropzone}){
                   </Button>
                   </Segment>
                 </Form>
-               
             </Grid.Column>
           </Grid>
-        </>
+      </>
     )
 }
