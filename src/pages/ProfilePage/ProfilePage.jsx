@@ -84,9 +84,7 @@ export default function ProfilePage({user, handleLogout}){
           const data = await permissionApi.getPermissions(user._id)
           if (data.permissions.length) {
               setAdmin(true)
-          } else {
-              console.log('no permissions')
-          }
+          } 
         } catch (err){
           console.log("error getting permissions")
         }
