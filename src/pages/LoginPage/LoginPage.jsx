@@ -93,7 +93,7 @@ export default function LoginPage(props){
           <Message>
             <p>New to us? <Link to="/signup">Sign Up</Link></p>
           </Message>
-          {/* {error ? <ErrorMessage error={error} /> : null} */}
+          {error ? <Segment className="errorMsg" color="red" style={{backgroundColor: '#FFF1F1'}}><ErrorMessage error={error} /></Segment> : null}
         </Grid.Column>
       </Grid>
     </div>

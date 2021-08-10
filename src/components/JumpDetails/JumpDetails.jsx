@@ -73,7 +73,7 @@ export default function JumpDetails({jump, addJumper, removeJumper, user, delete
                 </Card.Content>
                  
                 <Card.Content extra>
-                    {full && onJump > -1 ? <Button color="red" onClick={() => removeJumper(jump.jumpers[onJump]._id)}>Remove Me</Button> : ''}
+                    {full && onJump > -1 ? <><Button color="red" onClick={() => removeJumper(jump.jumpers[onJump]._id)}>Remove Me</Button><br /></> : ''}
                     
                     {!full ?  
                     <><Button color={buttonColor} onClick={clickHandler}>{text}</Button>

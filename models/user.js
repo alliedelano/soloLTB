@@ -8,12 +8,11 @@ const userSchema = new mongoose.Schema({
   lastName: {type: String, required: true},
   email: {type: String, required: true, lowercase: true, unique: true},
   username: {type: String, required: true, lowercase: true, unique: true},
-  bio: String,
-  password: String,
+  bio: {type: String, required: true},
+  password: {type: String, required: true},
   photoUrl: String,
   homeDz: { type: mongoose.Schema.Types.ObjectId, ref: 'Dropzone'},
-  //disciplines: [String],
-  experience: String
+  experience: {type: String, required: true},
 }, {
   timestamps: true
 });

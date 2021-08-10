@@ -154,8 +154,8 @@ export default function ProfilePage({user, handleLogout}){
             <ProfileBio feedUser={profileUser} dropzone={profileDz} admin={admin} myProfile={myProfile}/>
             <br />
             <Divider />
-            <br />
             <h3 className="page-message">{profileUser.firstName}'s Jumps</h3>
+            <br />
             <JumpFeed 
                 user={user}
                 feedUser={profileUser}  

@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import * as jumpApi from '../../utils/jumpApi'
 import './JumpCard.css'
 
-export default function JumpCard({jump, addJumper, removeJumper, user, deleteJump, today, feedUser}){
+export default function JumpCard({jump, addJumper, removeJumper, user, deleteJump}){
 
     { (jump.jumpers.length === parseInt(jump.slots) ? <h5>Jump Full!</h5>:<h5>Looking for more jumpers! ({jump.jumpers.length} / {parseInt(jump.slots)} slots)</h5>)}
 

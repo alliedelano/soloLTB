@@ -7,3 +7,8 @@
   background-position: center;
   
 }
+
+.div.ui.red.segment.errorMsg {
+  background-color: #FFF1F1;
+  color: red;
+}

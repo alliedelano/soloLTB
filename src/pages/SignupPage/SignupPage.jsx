@@ -9,7 +9,7 @@ import { useHistory, Link } from 'react-router-dom';
 
 export default function SignUpPage(props){
     const [dropzones, setDropzones] = useState([]);
-    const [error, setError ] = useState('error')
+    const [error, setError ] = useState('')
     const [selectedFile, setSelectedFile] = useState('file')
     const [loading, setLoading] = useState(false)
     const [state, setState] = useState({
@@ -217,10 +217,11 @@ export default function SignUpPage(props){
                     Sign Up
                   </Button>
                   </Segment>
-                  {/* {error ? <ErrorMessage error={error} /> : null} */}
+                  {error ? <Segment className="errorMsg" color="red" style={{backgroundColor: '#FFF1F1'}}><ErrorMessage error={error} /></Segment> : null}
                 </Form>
                 <Message>
             <p>Already have an account? <Link to="/login">Log In</Link></p>
+            
           </Message>
             </Grid.Column>
           </Grid>
