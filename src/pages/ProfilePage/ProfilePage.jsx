@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import userService from '../../utils/userService'
 import { useParams } from 'react-router-dom'
-import MenuBar from '../../components/MenuBar/MenuBar'
 import Footer from '../../components/Footer/Footer'
 import ProfileBio from '../../components/ProfileBio/ProfileBio'
 import JumpFeed from '../../components/JumpFeed/JumpFeed'
@@ -107,7 +106,6 @@ export default function ProfilePage({user, handleLogout}){
     if (error) {
         return(
             <>
-                <MenuBar user={user} />
                 <h1>{error}</h1>
             </>
         )
