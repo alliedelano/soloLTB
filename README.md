@@ -5,7 +5,7 @@ SoloLTB is a load organizing app built for skydivers using the MERN stack. Once 
 
 
 ## Screenshots
-![main menu](src/images/mainMenu.png | width=100)
+![main menu](src/images/mainMenu.png)
 ![dz feed small](src/images/dzfeed_small.png)
 ![weather](src/images/weather.png)
 ![my jumps](src/images/myjumps.png)
