@@ -1,11 +1,13 @@
 ![dz feed](src/images/dzfeed.png)
 
 # Solo, Looking to Build 
-SoloLTB is a load organizing app built for skydivers using the MERN stack. Once logged in, jumpers can check out upcoming jumps at their home dropzone, join jumps, organize new jumps,check the weather, and look at the profiles of other jumpers. The app also includes an admin portal for easily adding new dropzones and user permissions.
+SoloLTB is a load organizing app built for skydivers using the MERN stack. Once signed up and logged in, jumpers can check out upcoming jumps at their home dropzone, join jumps, organize new jumps, check the weather, and look at the profiles of other jumpers. The app also includes an admin portal for easily adding new dropzones and user permissions.
 
 
 ## Screenshots
 ![first row](src/images/first_row.png)
+![second row](src/images/second_row.png)
+![third row](src/images/third_row.png)
 
 ## Technologies Used
 * React
