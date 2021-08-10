@@ -13,6 +13,8 @@ export default function AdminPage({user, handleLogout}){
     const [loading, setLoading] = useState(true)
     const [permissions, setPermissions] = useState([])
     const history = useHistory()
+    const [dzSuccess, setDzSuccess] = useState(false)
+    const [permSuccess, setPermSuccess] = useState(false)
 
   async function getPermissions(){
       try {
@@ -28,17 +30,23 @@ export default function AdminPage({user, handleLogout}){
       }
     }
 
-    function handleAddDropzone(dropzone){
-        const data = dropzoneApi.create(dropzone);
+    async function handleAddDropzone(dropzone){
+        const data = await dropzoneApi.create(dropzone);
+        setDzSuccess(true)     
     }
 
-    function handleAddPermission(permission){
-        const data = permissionApi.create(permission)
+    async function handleAddPermission(permission){
+        const data = await permissionApi.create(permission)
+        setPermSuccess(true)
     }
 
     useEffect(() => {
         getPermissions()
     }, [])
+
+    useEffect(() => {
+
+    }, [dzSuccess])
      
     return(
         <>
@@ -47,11 +55,11 @@ export default function AdminPage({user, handleLogout}){
                     <HeaderComp user={user} handleLogout={handleLogout}/>
                     <div className="admin-page">
                         <h1 className="admin-header">Admin Portal</h1>
-                        <AddDropzoneForm handleAddDropzone={handleAddDropzone} />
+                        <AddDropzoneForm dzSuccess={dzSuccess} handleAddDropzone={handleAddDropzone} />
                         <br />
                         <br />
                         <br />
-                        <AddPermissionForm user={user} handleAddPermission={handleAddPermission}/> 
+                        <AddPermissionForm permSuccess={permSuccess} user={user} handleAddPermission={handleAddPermission}/> 
                     </div>
                     <Footer user={user}  />
                 </> 

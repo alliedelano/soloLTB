@@ -4,7 +4,7 @@ import { Button, Form, Grid, Header, Segment, Icon } from 'semantic-ui-react';
 import userService from '../../utils/userService'
 
 
-export default function AddPermissionForm({user, handleAddPermission}){
+export default function AddPermissionForm({user, handleAddPermission, permSuccess}){
 
     const [permissionTypes] = useState([
         {key: 1, label: 'admin', value: 'admin'},
@@ -89,6 +89,7 @@ export default function AddPermissionForm({user, handleAddPermission}){
                             >
                             Add Permission
                             </Button>
+                            {(permSuccess) ? <h1>Permission added!</h1> : ''}
                         </Segment>
                     </Form>
                 </Grid.Column>

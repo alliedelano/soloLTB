@@ -66,6 +66,7 @@ export default function AddDropzoneForm(props){
                       >
                       Add Dropzone
                     </Button>
+                    {(props.dzSuccess) ? <h1>Success! DZ added!</h1> : ''}
                 </Segment>
               </Form>
             </Grid.Column>
