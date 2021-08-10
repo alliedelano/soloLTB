@@ -13,7 +13,6 @@ export default function SingleJumpPage({user, handleLogout}){
     
     const [jump, setJump] = useState({})
     const [loading, setLoading] = useState(true)
-    const [users, setUsers] = useState([])
     const [full, setFull] = useState(false)
 
     const { jumpId } = useParams();
@@ -72,7 +71,6 @@ export default function SingleJumpPage({user, handleLogout}){
         }
     }
 
-
     useEffect(() => {
         getJump()
     }, [])
@@ -80,29 +78,27 @@ export default function SingleJumpPage({user, handleLogout}){
     useEffect(() => {
     }, [jump])
     
-    
     return(
         <>
             <HeaderComp user={user} handleLogout={handleLogout}/>
             <div className="single-jump">
-            {loading ? (
-                <Segment>
-                    <Dimmer active inverted>
-                        <Loader size="small">Loading</Loader>
-                    </Dimmer>
-                    <Image src="https://react.semantic-ui.com/images/wireframe/short-paragraph.png" />
-                </Segment>
-            ) : 
-            <><JumpDetails full={full} jump={jump} user={user} loading={loading} addJumper={addJumper} removeJumper={removeJumper} deleteJump={deleteJump}/>
-            <br />
-             {full ? '' : 
-            <AddFriendForm user={user} loading={loading} jump={jump} handleAddFriend={handleAddFriend}/>
+                {loading ? (
+                    <Segment>
+                        <Dimmer active inverted>
+                            <Loader size="small">Loading</Loader>
+                        </Dimmer>
+                        <Image src="https://react.semantic-ui.com/images/wireframe/short-paragraph.png" />
+                    </Segment>
+                ) : 
+                <><JumpDetails full={full} jump={jump} user={user} loading={loading} addJumper={addJumper} removeJumper={removeJumper} deleteJump={deleteJump}/>
+                <br />
+                {full ? '' : 
+                <AddFriendForm user={user} loading={loading} jump={jump} handleAddFriend={handleAddFriend}/>
+                    }
+                </>
                 }
-            </>
-        }
             </div>
             <Footer user={user}/>
-        
         </>
     )
 }

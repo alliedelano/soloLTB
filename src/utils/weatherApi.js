@@ -1,5 +1,3 @@
-
-
 function getWeather(url){
     return fetch(url).then(res => {
 		if(res.ok) return res.json()
@@ -9,4 +7,4 @@ function getWeather(url){
 
 export default {
     getWeather
-  };
+};

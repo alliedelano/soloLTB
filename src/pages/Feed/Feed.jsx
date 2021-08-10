@@ -1,11 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import JumpFeed from '../../components/JumpFeed/JumpFeed'
-import MenuBar from '../../components/MenuBar/MenuBar'
 import HeaderComp from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import * as jumpApi from '../../utils/jumpApi';
 import * as jumperApi from '../../utils/jumperApi'
-import * as permissionApi from '../../utils/permissionApi'
 import "./Feed.css"
 
 
@@ -24,7 +22,7 @@ export default function Feed({user, handleLogout}){
             }
             setLoading(false)
         } catch (err){
-            console.log(err, " this is the error")
+            console.log(err)
         }
     }
 
@@ -62,15 +60,13 @@ export default function Feed({user, handleLogout}){
     return(
         <>
             <HeaderComp user={user} handleLogout={handleLogout}/>
-            
             <div className="feed">
-               <br />
-            <h3 className="page-message">Here's the scoop at your DZ!</h3>
-            <br />
-            <JumpFeed jumpsExist={jumpsExist} isFeed={true} user={user} feedUser={user} jumps={jumps} loading={loading} addJumper={addJumper} removeJumper={removeJumper} deleteJump={deleteJump}/>
+                <br />
+                <h3 className="page-message">Here's the scoop at your DZ!</h3>
+                <br />
+                <JumpFeed jumpsExist={jumpsExist} isFeed={true} user={user} feedUser={user} jumps={jumps} loading={loading} addJumper={addJumper} removeJumper={removeJumper} deleteJump={deleteJump}/>
             </div>
             <Footer user={user}/>
         </>
-
     )
 }

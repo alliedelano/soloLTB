@@ -1,12 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import MenuBar from '../../components/MenuBar/MenuBar'
 import HeaderComp from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import dropzoneApi from '../../utils/dropzoneApi'
 import weatherApi from '../../utils/weatherApi'
 import WeatherFeed from '../../components/WeatherFeed/WeatherFeed'
-import { findAllByTestId } from '@testing-library/react';
-import {Divider} from 'semantic-ui-react'
 import './WeatherPage.css'
 
 export default function WeatherPage({user, handleLogout}){
@@ -14,7 +11,6 @@ export default function WeatherPage({user, handleLogout}){
     const [dropzone, setDropzone] = useState({})
     const [loading, setLoading] = useState(true)
     const [weather, setWeather] = useState(null)
-
 
     async function getWeather(){
         const data = await dropzoneApi.getDropzone(user.homeDz)
@@ -32,12 +28,11 @@ export default function WeatherPage({user, handleLogout}){
     return(
         <>
             <HeaderComp user={user} handleLogout={handleLogout}/>
-            
             <div className="weatherFeed">
                 <br />
                 <h2 className="dzTitle">{dropzone.name} Weather</h2>
                 <br />
-            {(loading) ?   <p1>Loading...</p1> :
+            {(loading) ?  <p1>Loading...</p1> :
                 <WeatherFeed weather={weather} loading={loading}/>}
             </div>
             <Footer user={user} />

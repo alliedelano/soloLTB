@@ -11,7 +11,7 @@ import * as jumperApi from '../../utils/jumperApi'
 import HeaderComp from '../../components/Header/Header'
 import './ProfilePage.css'
 import * as permissionApi from '../../utils/permissionApi'
-import { findAllByDisplayValue } from '@testing-library/react'
+
 
 
 export default function ProfilePage({user, handleLogout}){
@@ -28,15 +28,6 @@ export default function ProfilePage({user, handleLogout}){
     const [jumpsExist, setJumpsExist] = useState(true);
 
     
-    async function getJumps(){
-        try {
-            const data = await jumpApi.getAll();
-            setAllJumps([...data.jumps])
-            setLoading(false)
-        } catch (err){
-            console.log(err, " this is the error")
-        }
-    }
     async function addJumper(jumpId){
         try {
             const data = await jumperApi.addJumper(jumpId);
@@ -63,8 +54,6 @@ export default function ProfilePage({user, handleLogout}){
             console.log(err)
         }
     }
-
-    
 
     const { username } = useParams();
 
@@ -104,7 +93,6 @@ export default function ProfilePage({user, handleLogout}){
         }
       }
 
-    
     useEffect(() => {
         getProfile();
     }, [])
@@ -115,9 +103,6 @@ export default function ProfilePage({user, handleLogout}){
 
     useEffect(() => {
     }, [joinedJumps])
-
-    
-
 
     if (error) {
         return(
@@ -147,29 +132,27 @@ export default function ProfilePage({user, handleLogout}){
     return(
         <>
             <HeaderComp user={user} handleLogout={handleLogout}/>
-            
             <div className="profile-page">
-            <br />
-            <br />
-            <ProfileBio feedUser={profileUser} dropzone={profileDz} admin={admin} myProfile={myProfile}/>
-            <br />
-            <Divider />
-            <h3 className="page-message">{profileUser.firstName}'s Jumps</h3>
-            <br />
-            <JumpFeed 
-                user={user}
-                feedUser={profileUser}  
-                jumps={joinedJumps}
-                isProfile={true} 
-                loading={loading} 
-                addJumper={addJumper} 
-                removeJumper={removeJumper}
-                deleteJump={deleteJump}
-                jumpsExist={jumpsExist}
+                <br />
+                <br />
+                <ProfileBio feedUser={profileUser} dropzone={profileDz} admin={admin} myProfile={myProfile}/>
+                <br />
+                <Divider />
+                <h3 className="page-message">{profileUser.firstName}'s Jumps</h3>
+                <br />
+                <JumpFeed 
+                    user={user}
+                    feedUser={profileUser}  
+                    jumps={joinedJumps}
+                    isProfile={true} 
+                    loading={loading} 
+                    addJumper={addJumper} 
+                    removeJumper={removeJumper}
+                    deleteJump={deleteJump}
+                    jumpsExist={jumpsExist}
                 />
             </div>
             <Footer user={user} />
-            
         </>
     )
 }

@@ -11,14 +11,11 @@ async function create(req, res){
         await permission.save();
         res.status(201).json({ permission: permission })
     } catch (err) {
-        console.log(err, "error in controller");
         res.json({ err })
     }
 }
 
 async function userPermissions(req, res){
-    console.log('hit permissions function')
     const permissions = await Permission.find({userId: req.params.userId, type: 'admin'})
-    console.log(permissions)
     res.status(200).json({ permissions: permissions })
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import MenuBar from '../../components/MenuBar/MenuBar'
 import HeaderComp from '../../components/Header/Header'
 import {Icon} from 'semantic-ui-react'
 import Footer from '../../components/Footer/Footer'
@@ -10,8 +9,6 @@ export default function MenuPage({user, handleLogout}){
     return(
         <>
             <HeaderComp user={user} handleLogout={handleLogout}/>
-            
-            
             <div className="menu-page">
                 <br />
                 <Link class="menu-link" to="/dzfeed"><h4><Icon name="users" size="huge"></Icon>  <br />See what's up at the DZ</h4></Link>

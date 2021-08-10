@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import AddJumpForm from "../../components/AddJumpForm/AddJumpForm"
 import HeaderComp from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
-import userEvent from '@testing-library/user-event';
 import dropzoneApi from '../../utils/dropzoneApi'
 import { Grid, Loader } from 'semantic-ui-react'
 import './AddJumpPage.css'
@@ -23,13 +22,10 @@ export default function AddJumpPage({user, handleLogout}){
         }
     }
 
-
-
     useEffect(() => {
         getDropzone();
     }, [])
 
-    
     if (loading) {
         return (
           <Grid
@@ -49,10 +45,9 @@ export default function AddJumpPage({user, handleLogout}){
     return(
         <>
             <HeaderComp user={user} handleLogout={handleLogout}/>
-           
             <div className="add-jump">
               <br />
-            <AddJumpForm user={user} dropzone={dropzone} />
+              <AddJumpForm user={user} dropzone={dropzone} />
             </div>
             <Footer user={user} />
         </>

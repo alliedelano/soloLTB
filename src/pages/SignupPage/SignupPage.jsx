@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
-import { Button, Form, Grid, Header, Image, Segment, Icon, Dimmer, Loader, Select, Message} from 'semantic-ui-react';
+import { Button, Form, Grid, Header, Image, Segment, Icon, Dimmer, Loader, Message} from 'semantic-ui-react';
 import dropzoneApi from '../../utils/dropzoneApi';
 import userService from '../../utils/userService';
 import { useHistory, Link } from 'react-router-dom';
-
-
 
 export default function SignUpPage(props){
     const [dropzones, setDropzones] = useState([]);
@@ -21,15 +19,9 @@ export default function SignUpPage(props){
         passwordConf: '',
         bio: ''
     })
-    
-
-    // const disciplineOptions = [
-    //   { key: 'belly', text: 'Belly', value: 'belly'},
-    //   { key: 'freefly', text: 'Freefly', value: 'freefly'}
-    // ]
 
     const [experienceList] = useState([
-      { key: '0', label: '25+ Jumps', value: '0'},
+      { key: '0', label: '25+ Jumps', value: 'New!'},
       { key: '50', label: '50+ Jumps', value: '50'},
       { key: '100', label: '100+ Jumps', value: '100'},
       { key: '200', label: '200+ Jumps', value: '200'},
@@ -41,7 +33,6 @@ export default function SignUpPage(props){
 
     const [expValue, setExpValue] = useState(experienceList[0].value)  
   
-
     const [homeDzValue, setHomeDzValue] = useState('')
 
     const history = useHistory()
@@ -102,9 +93,8 @@ export default function SignUpPage(props){
               </Dimmer>
               <Image src="https://react.semantic-ui.com/images/wireframe/short-paragraph.png" />
             </Segment>
-      ) : null}
-          <Grid.Column style={{ maxWidth: 450 }}>
-                          
+          ) : null}
+          <Grid.Column style={{ maxWidth: 450 }}>        
               <Form autoComplete="off"  onSubmit={handleSubmit}>
                 <Segment raised>
                   <Header as="h2" color="blue" textAlign="center" inverted>
@@ -161,9 +151,7 @@ export default function SignUpPage(props){
                       onChange={handleChange}
                       required
                     />
-                  
                     <select
-                      
                       value={dropzones.selectValue}
                       onChange={e => setHomeDzValue(e.target.value)}
                       required
@@ -178,7 +166,6 @@ export default function SignUpPage(props){
                       ))}
                     </select>
                     <br />
-                    
                     <select
                       value={experienceList.selectValue}
                       onChange={e => setExpValue(e.target.value)}
@@ -195,7 +182,6 @@ export default function SignUpPage(props){
                       ))}
                     </select>
                     <br />
-                    
                     <Form.TextArea required placeholder='Tell everyone a bit about yourself' name="bio" onChange={handleChange}/>
                     <Form.Field> 
                         <Form.Input
@@ -215,14 +201,13 @@ export default function SignUpPage(props){
                       inverted
                     >
                     Sign Up
-                  </Button>
-                  </Segment>
-                  {error ? <Segment className="errorMsg" color="red" style={{backgroundColor: '#FFF1F1'}}><ErrorMessage error={error} /></Segment> : null}
-                </Form>
-                <Message>
-            <p>Already have an account? <Link to="/login">Log In</Link></p>
-            
-          </Message>
+                    </Button>
+                </Segment>
+                {error ? <Segment className="errorMsg" color="red" style={{backgroundColor: '#FFF1F1'}}><ErrorMessage error={error} /></Segment> : null}
+              </Form>
+              <Message>
+                <p>Already have an account? <Link to="/login">Log In</Link></p>
+              </Message>
             </Grid.Column>
           </Grid>
         </div>

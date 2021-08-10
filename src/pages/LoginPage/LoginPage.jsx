@@ -1,4 +1,4 @@
-import React, { useEffect, useState, } from 'react';
+import React, { useState, } from 'react';
 import './LoginPage.css'
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
 import userService from '../../utils/userService';
@@ -42,12 +42,7 @@ export default function LoginPage(props){
     }
   }
 
-
-
-
   return (
-
-  
     <div className="login-signup">
       <Grid
         textAlign="center"
@@ -57,10 +52,10 @@ export default function LoginPage(props){
         <Grid.Column style={{ maxWidth: 450 }}>
           <Form autoComplete="off" onSubmit={handleSubmit}>
             <Segment raised>
-            <Header as="h2" color="blue" textAlign="center" inverted>
-            <Icon name="plane" /> Log in to your
-            account
-          </Header></Segment>
+              <Header as="h2" color="blue" textAlign="center" inverted>
+                <Icon name="plane" /> Log in to your account
+              </Header>
+            </Segment>
             <Segment stacked>
               <Form.Input
                 type="email"
@@ -96,9 +91,7 @@ export default function LoginPage(props){
           {error ? <Segment className="errorMsg" color="red" style={{backgroundColor: '#FFF1F1'}}><ErrorMessage error={error} /></Segment> : null}
         </Grid.Column>
       </Grid>
-    </div>
-    
-      
+    </div>    
   );
 }
 
