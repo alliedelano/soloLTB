@@ -155,7 +155,7 @@ export default function ProfilePage({user, handleLogout}){
             <br />
             <Divider />
             <br />
-            <h3 className="page-message">Jumps</h3>
+            <h3 className="page-message">{profileUser.firstName}'s Jumps</h3>
             <JumpFeed 
                 user={user}
                 feedUser={profileUser}  

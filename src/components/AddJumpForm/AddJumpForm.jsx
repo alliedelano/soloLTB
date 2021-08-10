@@ -25,13 +25,6 @@ export default function AddJumpForm({user, dropzone}){
     }
     
 
-    // function handleDisciplineChange(e){
-    //     setDisciplines([
-    //         ...disciplines,
-    //         e.target.option
-    //     ])
-    // }
-
     async function handleSubmit(e){
         e.preventDefault()
         const formData = new FormData()

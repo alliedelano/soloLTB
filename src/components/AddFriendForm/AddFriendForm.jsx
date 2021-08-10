@@ -46,9 +46,9 @@ export default function AddFriendForm({user, jump, handleAddFriend, loading}){
 
     
 
-    useEffect(() => {
-        getFriends();
-    }, [])
+    // useEffect(() => {
+    //     getFriends();
+    // }, [])
 
     useEffect(() => {
         getFriends()
