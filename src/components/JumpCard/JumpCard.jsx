@@ -73,9 +73,11 @@ export default function JumpCard({jump, addJumper, removeJumper, user, deleteJum
                 </Card.Content>
                 
                 <Card.Content extra>
-                    {full ? '': 
+                    {full && onJump > -1 ? <Button color="red" onClick={() => removeJumper(jump.jumpers[onJump]._id)}>Remove Me</Button> : ''}
+                    
+                    {!full ?  
                     <><Button color={buttonColor} onClick={clickHandler}>{text}</Button>
-                    <br /></>
+                    <br /></> : ''
                 }
                 </Card.Content> 
             </Card>

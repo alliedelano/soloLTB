@@ -25,7 +25,7 @@ export default function SingleJumpPage({user, handleLogout}){
             const data = await jumpApi.getJump(jumpId);
             console.log(data.jump)
             await setJump(data.jump)
-            setFull(jump.jumpers.length === parseInt(jump.slots))
+            await setFull(data.jump.jumpers.length === parseInt(data.jump.slots))
             setLoading(false)
         } catch (err) {
             console.log(err, ' error from getting jump - jump page')
@@ -93,7 +93,7 @@ export default function SingleJumpPage({user, handleLogout}){
                     <Image src="https://react.semantic-ui.com/images/wireframe/short-paragraph.png" />
                 </Segment>
             ) : 
-            <><JumpDetails jump={jump} user={user} loading={loading} addJumper={addJumper} removeJumper={removeJumper} deleteJump={deleteJump}/>
+            <><JumpDetails full={full} jump={jump} user={user} loading={loading} addJumper={addJumper} removeJumper={removeJumper} deleteJump={deleteJump}/>
             <br />
              {full ? '' : 
             <AddFriendForm user={user} loading={loading} jump={jump} handleAddFriend={handleAddFriend}/>

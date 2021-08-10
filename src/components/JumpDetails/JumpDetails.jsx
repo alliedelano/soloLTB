@@ -9,7 +9,7 @@ export default function JumpDetails({jump, addJumper, removeJumper, user, delete
 
     const clickHandler = onJump > -1 ? () => removeJumper(jump.jumpers[onJump]._id): () => addJumper(jump._id)
     const text = onJump > -1 ? 'Remove Me' : 'Add Me'
-    const color = onJump > -1 ? 'red' : 'green'
+    const buttonColor = onJump > -1 ? 'red' : 'green'
     
 
     function handleSubmit(e){
@@ -71,15 +71,16 @@ export default function JumpDetails({jump, addJumper, removeJumper, user, delete
                         </Grid.Row>  
                     </Grid>
                 </Card.Content>
-                
+                 
                 <Card.Content extra>
-                    <br />
-                    <Button color={color} onClick={clickHandler}>{text}</Button>
-                    <br />
-                    <br />
-                    {(jump.organizer === user._id) ? <> <Button color="blue" className="delete-jump-btn" onClick={handleSubmit}>Delete My Jump</Button> <br />Warning: Cannot be undone! </>: null }
-
-                </Card.Content>  
+                    {full && onJump > -1 ? <Button color="red" onClick={() => removeJumper(jump.jumpers[onJump]._id)}>Remove Me</Button> : ''}
+                    
+                    {!full ?  
+                    <><Button color={buttonColor} onClick={clickHandler}>{text}</Button>
+                    <br /></> : ''
+                }
+                    {(jump.organizer === user._id) ? <> <br /><Button color="blue" className="delete-jump-btn" onClick={handleSubmit}>Delete My Jump</Button> <br />Warning: Cannot be undone! </>: null }
+                </Card.Content> 
             </Card>
             </div>
         </>

@@ -35,7 +35,7 @@ async function deleteJumper(req, res){
         await jump.save()
         res.json({data: 'jumper removed'})
     } catch(err){
-        res.json({error: error})
+        res.json({error: 'error removing jumper'})
     }
 }
 
