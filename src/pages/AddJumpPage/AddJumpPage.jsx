@@ -3,7 +3,7 @@ import AddJumpForm from "../../components/AddJumpForm/AddJumpForm"
 import HeaderComp from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import dropzoneApi from '../../utils/dropzoneApi'
-import { Grid, Loader } from 'semantic-ui-react'
+import { Grid, Loader, Icon } from 'semantic-ui-react'
 import './AddJumpPage.css'
 
 export default function AddJumpPage({user, handleLogout}){
@@ -46,6 +46,8 @@ export default function AddJumpPage({user, handleLogout}){
         <>
             <HeaderComp user={user} handleLogout={handleLogout}/>
             <div className="add-jump">
+              <br />
+              <Icon name="plane" size="huge"></Icon> 
               <br />
               <AddJumpForm user={user} dropzone={dropzone} />
             </div>

@@ -63,15 +63,15 @@ export default function JumpDetails({jump, addJumper, removeJumper, user, delete
                         </Grid>
                     </Card.Content>
                     <Card.Content extra>
-                        {full && onJump > -1 ? <><Button color="red" onClick={() => removeJumper(jump.jumpers[onJump]._id)}>Remove Me</Button><br /></> : ''}
+                        {full && onJump > -1 ? <><Button inverted color="red" onClick={() => removeJumper(jump.jumpers[onJump]._id)}>Remove Me</Button><br /></> : ''}
                         
                         {!full ?  
                         <>
-                            <Button color={buttonColor} onClick={clickHandler}>{text}</Button>
+                            <Button inverted color={buttonColor} onClick={clickHandler}>{text}</Button>
                             <br />
                         </> : ''
                         }
-                        {(jump.organizer === user._id) ? <> <br /><Button color="blue" className="delete-jump-btn" onClick={handleSubmit}>Delete My Jump</Button> <br />Warning: Cannot be undone! </>: null }
+                        {(jump.organizer === user._id) ? <> <br /><Button inverted color="blue" className="delete-jump-btn" onClick={handleSubmit}>Delete My Jump</Button> <br />Warning: Cannot be undone! </>: null }
                     </Card.Content> 
                 </Card>
             </div>

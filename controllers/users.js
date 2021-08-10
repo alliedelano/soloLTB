@@ -64,7 +64,6 @@ function signup(req, res) {
 async function login(req, res) {
   try {
     const user = await User.findOne({email: req.body.email});
-    console.log(user, ' this user in login')
     if (!user) return res.status(401).json({err: 'Bad credentials - please try again.'});
     user.comparePassword(req.body.password, (err, isMatch) => {
       if (isMatch) {

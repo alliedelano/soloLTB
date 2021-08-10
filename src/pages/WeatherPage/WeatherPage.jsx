@@ -5,6 +5,7 @@ import dropzoneApi from '../../utils/dropzoneApi'
 import weatherApi from '../../utils/weatherApi'
 import WeatherFeed from '../../components/WeatherFeed/WeatherFeed'
 import './WeatherPage.css'
+import {Icon} from 'semantic-ui-react'
 
 export default function WeatherPage({user, handleLogout}){
     
@@ -29,6 +30,8 @@ export default function WeatherPage({user, handleLogout}){
         <>
             <HeaderComp user={user} handleLogout={handleLogout}/>
             <div className="weatherFeed">
+                <br />
+                <Icon name="sun" size="huge"></Icon>
                 <br />
                 <h2 className="dzTitle">{dropzone.name} Weather</h2>
                 <br />

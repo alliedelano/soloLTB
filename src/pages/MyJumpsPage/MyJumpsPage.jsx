@@ -6,6 +6,7 @@ import JumpFeed from '../../components/JumpFeed/JumpFeed'
 import * as jumpApi from '../../utils/jumpApi'
 import * as jumperApi from '../../utils/jumperApi'
 import './MyJumpsPage.css'
+import {Icon} from 'semantic-ui-react'
 
 export default function MyJumpsPage({user, handleLogout}){
     const [loading, setLoading] = useState(true);
@@ -74,6 +75,8 @@ export default function MyJumpsPage({user, handleLogout}){
         <>
             <HeaderComp user={user} handleLogout={handleLogout}/>
             <div className="my-jumps">
+                <br />
+                <Icon name="calendar alternate" size="huge"></Icon> 
                 <br />
                 <h3 className="page-message">My Jumps</h3>
                 <br />

@@ -52,7 +52,7 @@ export default function AddJumpForm({user, dropzone}){
                 <br />
                 <Segment raised>
                   <Header as="h2" color="blue" textAlign="center" inverted>
-                    <Icon name="plane" /> Organize a Jump
+                    Organize a Jump
                   </Header>
                 </Segment>    
                 <Form autoComplete="off"  onSubmit={handleSubmit}>

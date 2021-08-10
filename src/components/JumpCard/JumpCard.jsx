@@ -50,10 +50,10 @@ export default function JumpCard({jump, addJumper, removeJumper, user, deleteJum
                     </Grid>
                 </Card.Content>
                 <Card.Content extra>
-                    {full && onJump > -1 ? <Button color="red" onClick={() => removeJumper(jump.jumpers[onJump]._id)}>Remove Me</Button> : ''}
+                    {full && onJump > -1 ? <Button inverted color="red" onClick={() => removeJumper(jump.jumpers[onJump]._id)}>Remove Me</Button> : ''}
                     {!full ?  
                         <>
-                            <Button color={buttonColor} onClick={clickHandler}>{text}</Button>
+                            <Button inverted color={buttonColor} onClick={clickHandler}>{text}</Button>
                             <br />
                         </> : ''
                     }

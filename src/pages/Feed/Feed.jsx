@@ -5,6 +5,7 @@ import Footer from '../../components/Footer/Footer'
 import * as jumpApi from '../../utils/jumpApi';
 import * as jumperApi from '../../utils/jumperApi'
 import "./Feed.css"
+import {Icon} from 'semantic-ui-react'
 
 
 export default function Feed({user, handleLogout}){
@@ -62,7 +63,9 @@ export default function Feed({user, handleLogout}){
             <HeaderComp user={user} handleLogout={handleLogout}/>
             <div className="feed">
                 <br />
-                <h3 className="page-message">Here's the scoop at your DZ!</h3>
+                <Icon name="users" size="huge"></Icon>
+                <br />
+                <h3 className="page-message">Here's the scoop at the DZ!</h3>
                 <br />
                 <JumpFeed jumpsExist={jumpsExist} isFeed={true} user={user} feedUser={user} jumps={jumps} loading={loading} addJumper={addJumper} removeJumper={removeJumper} deleteJump={deleteJump}/>
             </div>

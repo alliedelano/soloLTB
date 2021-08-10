@@ -80,6 +80,7 @@ export default function AddFriendForm({user, jump, handleAddFriend, loading}){
                                 type="submit"
                                 className="btn"
                                 color="blue"
+                                inverted
                             >
                             Add Friend to Jump
                             </Button>
