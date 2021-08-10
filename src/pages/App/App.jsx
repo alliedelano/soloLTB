@@ -56,7 +56,7 @@ function App() {
                   <MyJumpsPage user={user} handleLogout={handleLogout} />
                 </Route>
                 <Route exact path="/admin">
-                  <AdminPage user={user}/>
+                  <AdminPage user={user} handleLogout={handleLogout}/>
                 </Route>
                 <Route exact path="/jumps/:jumpId">
                   <SingleJumpPage user={user} handleLogout={handleLogout}/>
