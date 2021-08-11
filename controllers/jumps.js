@@ -36,7 +36,6 @@ async function create(req, res){
     jump.jumpers.push({username: req.user.username, userId: req.user._id, userAvatar: req.user.photoUrl});
     try {
         await jump.save();
-        console.log(jump, "this is what's going into database")
         res.status(201).json({ jump:jump })
     } catch (err) {
         console.log(err, "error in controller");
