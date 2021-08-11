@@ -31,4 +31,5 @@ I used a Trello board to help organize the development of this app, from plannin
 * Additional user details visible to load organizers
 * Additional aviation-specific weather details, such as cloud height, cloud cover, visibility, and winds
 * Improve error handling
+* Improve loading screens
 * Update logo 
