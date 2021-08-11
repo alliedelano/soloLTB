@@ -47,7 +47,7 @@ function App() {
                   <Feed user={user} handleLogout={handleLogout}/>
                 </Route>
                 <Route exact path="/newjump">
-                  <AddJumpPage user={user}/>
+                  <AddJumpPage user={user} handleLogout={handleLogout}/>
                 </Route>
                 <Route exact path="/weather">
                   <WeatherPage user={user} handleLogout={handleLogout}/>
